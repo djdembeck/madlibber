@@ -1,22 +1,21 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const session = require('express-session')
-const app = express()
+const express = require("express");
+const mongoose = require("mongoose");
+const session = require("express-session");
+const app = express();
 
-mongoose.connect('mongodb://localhost/poker', {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost/poker", { useNewUrlParser: true });
 
-app.use(express.static(__dirname + '/public/dist/public'))
-app.use(express.urlencoded({extended:true}))
-app.use(express.json({extended:true}))
-app.use(session({secret: 'this is a secret, you will never guess it.'}))
+app.use(express.static(__dirname + "/public/dist/public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: true }));
+app.use(session({ secret: "this is a secret, you will never guess it." }));
 
-require('./server/config/routes')(app)
+require("./server/config/routes")(app);
 
-app.all("*", (req,res,next) => {
-    res.sendFile(__dirname + "/public/dist/public/index.html")
-  });
+app.all("*", (req, res, next) => {
+	res.sendFile(__dirname + "/public/dist/public/index.html");
+});
 
-  
-app.listen(8000, ()=>{
-    console.log('listening on port 8000')
-})
+app.listen(8000, () => {
+	console.log("listening on port 8000");
+});
