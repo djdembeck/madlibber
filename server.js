@@ -1,9 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const session = require("express-session");
 const app = express();
-
-mongoose.connect("mongodb://localhost/poker", { useNewUrlParser: true });
 
 app.use(express.static(__dirname + "/public/dist/public"));
 app.use(express.urlencoded({ extended: true }));
