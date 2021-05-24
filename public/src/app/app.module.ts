@@ -13,6 +13,7 @@ import { UserTopComponent } from "./user-top/user-top.component";
 import { MadlibTopComponent } from "./madlib-top/madlib-top.component";
 import { MadlibCreateComponent } from "./madlib-create/madlib-create.component";
 import { MadlibListComponent } from "./madlib-list/madlib-list.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 @NgModule({
 	declarations: [
@@ -26,6 +27,7 @@ import { MadlibListComponent } from "./madlib-list/madlib-list.component";
 		MadlibTopComponent,
 		MadlibCreateComponent,
 		MadlibListComponent,
+		DashboardComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],
