@@ -1,5 +1,5 @@
-# material-madlibs
-Madlibs game with WordsAPI validation. Built on the MEAN stack, using Material UI.
+# Madlibber
+Madlibs game with WordsAPI validation. Built on the MEAN stack, using Bulma.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
 
