@@ -14,6 +14,9 @@ import { MadlibTopComponent } from "./madlib-top/madlib-top.component";
 import { MadlibCreateComponent } from "./madlib-create/madlib-create.component";
 import { MadlibListComponent } from "./madlib-list/madlib-list.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpService } from "./http.service";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
 	declarations: [
@@ -29,8 +32,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 		MadlibListComponent,
 		DashboardComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule],
-	providers: [],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+	providers: [HttpService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
