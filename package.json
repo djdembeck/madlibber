@@ -24,6 +24,7 @@
 	"homepage": "https://github.com/djdembeck/madlibber#readme",
 	"dependencies": {
 		"express": "^4.17.1",
+		"express-session": "^1.17.2",
 		"mongoose": "^5.12.11"
 	}
 }

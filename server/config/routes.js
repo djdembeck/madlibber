@@ -11,15 +11,15 @@ module.exports = function (app) {
 		User.userLogin(req, res);
 	});
 
-	app.get("/user/show", (req, res) => {
+	app.get("/user/show/:id", (req, res) => {
 		User.showUser(req, res);
 	});
 
-	app.put("/user/update", (req, res) => {
+	app.put("/user/update/:id", (req, res) => {
 		User.updateUser(req, res);
 	});
 
-	app.delete("/destroy/user", (req, res) => {
+	app.delete("/user/delete/:id", (req, res) => {
 		User.deleteUser(req, res);
 	});
 };
