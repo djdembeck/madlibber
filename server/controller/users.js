@@ -20,8 +20,8 @@ module.exports = {
 					console.log(err);
 				});
 		} else {
-			console.log("Password does not match confirm password")
-			res.json("Password does not match confirm password");
+			console.log("Password does not match confirm password");
+			res.json(false);
 		}
 	},
 
@@ -58,20 +58,12 @@ module.exports = {
 	updateUser: function (req, res) {
 		User.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true })
 			.then((data) => res.json(data))
-			.catch((err) => {
-				for (let key in err.errors) {
-					res.json(err, err.errors[key].message);
-				}
-			});
+			.catch((err) => res.json(err))
 	},
 
 	deleteUser: function (req, res) {
 		User.findOneAndDelete({ _id: req.params.id })
-			.then((data) => {
-				res.json(data);
-			})
-			.catch((err) => {
-				res.json(err);
-			});
+			.then((data) => res.json(data))
+			.catch((err) => res.json(err));
 	},
 };

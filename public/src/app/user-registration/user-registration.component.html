@@ -7,6 +7,7 @@
 		</header>
 		<div class="card-content">
 			<div class="field">
+				{{firstNameErr}}
 				<label class="label has-text-light">First Name</label>
 				<div class="control">
 					<input
@@ -14,11 +15,12 @@
 						type="text"
 						name="first_name"
 						placeholder="eg John"
-            [(ngModel)]= 'user.first_name'
+            			[(ngModel)]= 'user.first_name'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{lastNameErr}}
 				<label class="label has-text-light">Last Name</label>
 				<div class="control">
 					<input
@@ -26,11 +28,12 @@
 						type="text"
 						name="last_name"
 						placeholder="eg Smith"
-            [(ngModel)]= 'user.last_name'
+            			[(ngModel)]= 'user.last_name'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{userNameErr}}
 				<label class="label has-text-light">Username:</label>
 				<div class="control">
 					<input
@@ -38,11 +41,12 @@
 						type="text"
 						name="user_name"
 						placeholder="eg jsmith"
-            [(ngModel)]= 'user.user_name'
+            			[(ngModel)]= 'user.user_name'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{emailErr}}
 				<label class="label has-text-light">Email</label>
 				<div class="control">
 					<input
@@ -50,29 +54,31 @@
 						type="email"
 						name="register_email"
 						placeholder="johnsmith@example.com"
-            [(ngModel)]= 'user.email'
+            			[(ngModel)]= 'user.email'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{pwError}}
 				<label class="label has-text-light">Password</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="password"
 						name="register_password"
-            [(ngModel)]= 'user.password'
+            			[(ngModel)]= 'user.password'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{passwordError}}
 				<label class="label has-text-light">Confirm PW</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="password"
 						name="register_confirm_password"
-            [(ngModel)]= 'user.confirm_password'
+            			[(ngModel)]= 'user.confirm_password'
 					/>
 				</div>
 			</div>

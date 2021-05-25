@@ -11,6 +11,12 @@ export class UserRegistrationComponent implements OnInit {
 	@Input()settings
 	user: any
 	errors: any
+	firstNameErr: any
+	lastNameErr:any
+	userNameErr:any
+	emailErr:any
+	pwError: any
+	passwordError: any
 
 	constructor(
 		private _http: HttpService,
@@ -20,17 +26,40 @@ export class UserRegistrationComponent implements OnInit {
 
 	ngOnInit() {
 		this.user = {}
+		this.passwordError = ''
+		this.firstNameErr = ''
+		this.lastNameErr = ''
+		this.userNameErr = ''
+		this.emailErr= ''
+		this.pwError= ''
 	}
 
 	onRegSubmit(){
 		this._http.createUser(this.user)
 		.subscribe((data:any)=>{
-			console.log('user created', data)
+	
 			if (data.errors){
-				console.log(data.errors)
+				if (data.errors.first_name)
+					this.firstNameErr = data.errors.first_name.message
+
+				if (data.errors.last_name)
+					this.lastNameErr = data.errors.last_name.message
+				
+				if (data.errors.user_name)
+					this.userNameErr = data.errors.user_name.message
+
+				if (data.errors.email)
+					this.emailErr = data.errors.email.message
+
+				if (data.errors.password)
+					this.pwError = data.errors.password.message
 			}
+			else if (data == false)
+				this.passwordError = 'Password does not match confirm password.'
+			
 			else {
-				this._router.navigate(['/'])
+				console.log('user created')
+				this._router.navigate(['/login'])
 			}
 		})
 	}
