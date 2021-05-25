@@ -60,9 +60,7 @@ module.exports = {
 	},
 
 	updateUser: function (req, res) {
-		User.findOneAndUpdate({ _id: req.session.id }, req.body, {
-			runValidators: true,
-		})
+		User.findOneAndUpdate({ _id: req.session.id }, req.body, { runValidators: true })
 			.then((data) => res.json(data))
 			.catch((err) => {
 				for (let key in err.errors) {
