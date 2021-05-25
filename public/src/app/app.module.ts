@@ -14,6 +14,7 @@ import { MadlibTopComponent } from "./madlib-top/madlib-top.component";
 import { MadlibCreateComponent } from "./madlib-create/madlib-create.component";
 import { MadlibListComponent } from "./madlib-list/madlib-list.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @NgModule({
 	declarations: [
@@ -28,6 +29,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 		MadlibCreateComponent,
 		MadlibListComponent,
 		DashboardComponent,
+		NavbarComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],

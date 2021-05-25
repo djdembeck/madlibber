@@ -11,45 +11,29 @@
 		/>
 	</head>
 	<body>
-		<nav class="navbar has-background-grey-dark" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<a
-					class="navbar-item has-text-weight-bold is-size-4 has-text-light"
-					[routerLink]="['/']"
-				>
-					Madlibber
-				</a>
-			</div>
-			<div class="navbar-menu">
-				<div class="navbar-end">
-					<div class="navbar-item">
-						<div class="buttons">
-							<!-- needs ngif session user, show logout/profile/edit links -->
-							<a class="button is-primary" [routerLink]="['/register']">
-								<strong>Sign up</strong>
-							</a>
-							<a class="button is-success" [routerLink]="['/login']"> Log in</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
+		<app-navbar></app-navbar>
 		<section class="section has-background-dark">
-			<div class="container" *ngIf='error_set'>
+			<div class="container" *ngIf="error_set">
 				<div class="notification is-danger">
 					<ul *ngFor="let error of error_set | keyvalue">
-						<ng-container *ngIf='error.key == "name"'>
-							<ng-container *ngFor='let subItem of error.value | keyvalue'>
-								<li *ngIf='subItem.value == "user defined"'>A pet by this name already exists</li>
-								<li *ngIf='subItem.value == "required"'>Must enter a name</li>
-								<li *ngIf='subItem.value == "minlength"'>Name should be at least 3 chars</li>
+						<ng-container *ngIf="error.key == 'name'">
+							<ng-container *ngFor="let subItem of error.value | keyvalue">
+								<li *ngIf="subItem.value == 'user defined'">
+									A pet by this name already exists
+								</li>
+								<li *ngIf="subItem.value == 'required'">Must enter a name</li>
+								<li *ngIf="subItem.value == 'minlength'">
+									Name should be at least 3 chars
+								</li>
 							</ng-container>
-						</ng-container>			
-						<li *ngIf='error.key == "type"'>Type should be at least 3 chars</li>
-						<li *ngIf='error.key == "description"'>Description should be at least 3 chars</li>
+						</ng-container>
+						<li *ngIf="error.key == 'type'">Type should be at least 3 chars</li>
+						<li *ngIf="error.key == 'description'">
+							Description should be at least 3 chars
+						</li>
 					</ul>
 				</div>
-				<div class="block"></div> 
+				<div class="block"></div>
 			</div>
 			<div class="container">
 				<div class="content">

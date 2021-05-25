@@ -8,9 +8,9 @@ import { HttpService } from "../http.service";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	@Input() settings
-	user: any
-	errors: any
+	@Input() settings;
+	user: any;
+	errors: any;
 
 	constructor(
 		private _http: HttpService,
@@ -18,7 +18,5 @@ export class UserLoginComponent implements OnInit {
 		private _router: Router
 	) {}
 
-	ngOnInit() {
-		
-	}
+	ngOnInit() {}
 }
