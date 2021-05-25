@@ -1,1 +1,26 @@
-<p>user-login works!</p>
+<div class="card has-background-grey-dark">
+	<form (submit)="onLoginSubmit()">
+		<header class="card-header has-background-success-dark">
+			<p class="card-header-title is-centered is-size-3 has-text-white-ter">Login</p>
+		</header>
+		<div class="card-content">
+			<div class="field">
+				<label class="label has-text-light">Email</label>
+				<div class="control">
+					<input class="input has-background-grey has-text-light" type="email" name="login_email" placeholder="johnsmith@example.com">
+				</div>
+			</div>
+			<div class="field">
+				<label class="label has-text-light">Password</label>
+				<div class="control">
+					<input class="input has-background-grey has-text-light" type="password" name="login_password">
+				</div>
+			</div>
+			<div class="field has-text-centered">
+				<div class="control">
+					<button class="button is-success" type="submit">Log In</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

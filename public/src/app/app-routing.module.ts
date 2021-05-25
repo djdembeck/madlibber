@@ -11,7 +11,11 @@ import { MadlibCreateComponent } from "./madlib-create/madlib-create.component";
 import { MadlibListComponent } from "./madlib-list/madlib-list.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 
-const routes: Routes = [{ path: "", component: DashboardComponent }];
+const routes: Routes = [
+	{ path: "", component: DashboardComponent },
+	{ path: "register", component: UserRegistrationComponent },
+	{ path: "login", component: UserLoginComponent },
+];
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
