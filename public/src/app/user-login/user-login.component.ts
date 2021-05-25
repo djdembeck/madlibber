@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { HttpService } from "../http.service";
 
 @Component({
 	selector: "app-user-login",
@@ -6,7 +8,17 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	constructor() {}
+	@Input() settings
+	user: any
+	errors: any
 
-	ngOnInit() {}
+	constructor(
+		private _http: HttpService,
+		private _route: ActivatedRoute,
+		private _router: Router
+	) {}
+
+	ngOnInit() {
+		
+	}
 }
