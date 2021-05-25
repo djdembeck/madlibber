@@ -15,6 +15,8 @@ const routes: Routes = [
 	{ path: "", component: DashboardComponent },
 	{ path: "register", component: UserRegistrationComponent },
 	{ path: "login", component: UserLoginComponent },
+	{ path: "user/edit", component: UserEditComponent },
+	{ path: "user/show", component: UserProfileComponent },
 ];
 
 @NgModule({
