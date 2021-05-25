@@ -14,6 +14,8 @@ import { MadlibTopComponent } from "./madlib-top/madlib-top.component";
 import { MadlibCreateComponent } from "./madlib-create/madlib-create.component";
 import { MadlibListComponent } from "./madlib-list/madlib-list.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { NavbarComponent } from "./navbar/navbar.component";
+
 import { HttpClientModule } from "@angular/common/http";
 import { HttpService } from "./http.service";
 import { FormsModule } from "@angular/forms";
@@ -31,6 +33,7 @@ import { FormsModule } from "@angular/forms";
 		MadlibCreateComponent,
 		MadlibListComponent,
 		DashboardComponent,
+		NavbarComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 	providers: [HttpService],
