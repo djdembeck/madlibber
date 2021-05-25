@@ -59,4 +59,10 @@ module.exports = {
 			})
 			.catch((err) => res.json(err));
 	},
+    destroy: (req, res) => {
+        Madlib.deleteOne({_id: req.params.id})
+            .then(deletedMadlib => res.json(deletedMadlib))
+            .catch((err) => res.json(err));
+            // do the User have to be updated??
+    }
 };
