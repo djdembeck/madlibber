@@ -4,13 +4,11 @@ const bcrypt = require("bcrypt");
 module.exports = {
 	createUser: function (req, res) {
 		if (req.body.password == req.body.confirm_password) {
-			bcrypt
-				.hash(req.body.password, 10)
+			bcrypt.hash(req.body.password, 10)
 				.then((hashed_password) => {
 					req.body.password = hashed_password;
 					var user = new User(req.body);
-					user
-						.save()
+					user.save()
 						.then((user) => {
 							res.json(user);
 						})
@@ -31,8 +29,7 @@ module.exports = {
 		console.log(req.body);
 		User.findOne({ user_name: req.body.user_name })
 			.then((user) => {
-				bcrypt
-					.compare(req.body.password, user.password)
+				bcrypt.compare(req.body.password, user.password)
 					.then((result) => {
 						if (result) {
 							console.log("User is logged in.");

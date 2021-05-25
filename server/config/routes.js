@@ -36,7 +36,7 @@ module.exports = function (app) {
 		Madlib.showAll(req, res);
 	});
 
-	app.put("/madlibs/likes", (req, res) => {
-		Madlib.update(req, res);
-	});
+app.put('/madlibs/:id/likes', (req, res) => {
+		Madlib.update(req, res)
+	})
 };

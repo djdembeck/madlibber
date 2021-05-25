@@ -19,11 +19,19 @@ export class HttpService {
 		return this._http.get(`user/show/${id}`);
 	}
 
-	updateUser(user_to_update: any) {
-		return this._http.put(`user/update/${user_to_update._id}`, user_to_update);
-	}
+		createMadlib(madlib:any){
+			return this._http.post('/madlibs/add', madlib)
+		}
 
-	deleteUser(user: any) {
-		return this._http.delete(`user/delete/${user._id}`);
-	}
+		showMadlibId(id:any){
+			return this._http.get(`/madlibs/${id}`)
+		}
+
+		displayMadlibs(){
+			return this._http.get('/madlibs')
+		}
+
+		addlikes(id:any){
+			return this._http.put(`/madlibs/${id}/likes`, id)
+		}
 }
