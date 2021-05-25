@@ -17,6 +17,8 @@ const routes: Routes = [
 	{ path: "login", component: UserLoginComponent },
 	{ path: "user/edit", component: UserEditComponent },
 	{ path: "user/show", component: UserProfileComponent },
+	{ path: "lib/create", component: MadlibCreateComponent },
+	// { path: "lib/:id/show", component: UserProfileComponent },
 ];
 
 @NgModule({

@@ -8,9 +8,10 @@ import { HttpService } from "../http.service";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	@Input() settings
-	user: any
-	errors: any
+	@Input() settings;
+	user: any;
+	errors: any;
+	userError: any;
 
 	constructor(
 		private _http: HttpService,
@@ -19,6 +20,20 @@ export class UserLoginComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		
+		this.user = {};
+		this.userError = "";
+	}
+
+	onLoginSubmit() {
+		this._http.userLogin(this.user).subscribe((data: any) => {
+			console.log("logged in", data);
+			if (data == true) {
+				localStorage.setItem("user", this.user);
+				this._router.navigate(["/"]);
+			} else {
+				this.userError = data;
+				console.log(this.userError);
+			}
+		});
 	}
 }

@@ -1,5 +1,5 @@
-const { User } = require("../models/user.js");
-const bcrypt =require('bcrypt')
+const { User } = require("../models/user");
+const bcrypt = require("bcrypt");
 
 module.exports = {
 	createUser: function (req, res) {
@@ -13,37 +13,38 @@ module.exports = {
 							res.json(user);
 						})
 						.catch((err) => {
-							for (let key in err.errors) {
-								res.json(err, err.errors[key].message);
-							}
+							res.json(err);
 						});
 				})
 				.catch((err) => {
-					console.log("hash error");
+					console.log(err);
 				});
 		} else {
+			console.log("Password does not match confirm password");
 			res.json("Password does not match confirm password");
 		}
 	},
 
 	userLogin: function (req, res) {
+		console.log(req.body);
 		User.findOne({ user_name: req.body.user_name })
 			.then((user) => {
 				bcrypt.compare(req.body.password, user.password)
 					.then((result) => {
 						if (result) {
-							req.session["user_id"] = user._id;
 							console.log("User is logged in.");
+							res.json(result);
 						} else {
 							res.json("Password is incorrect");
 						}
 					})
 					.catch((err) => {
-						res.json(err, "Password is incorrect");
+						res.json("Password is incorrect");
 					});
 			})
 			.catch((err) => {
-				res.json(err, "Login Failed");
+				console.log("User name not in DB");
+				res.json("Username does not exist");
 			});
 	},
 
@@ -58,7 +59,9 @@ module.exports = {
 	},
 
 	updateUser: function (req, res) {
-		User.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true })
+		User.findOneAndUpdate({ _id: req.params.id }, req.body, {
+			runValidators: true,
+		})
 			.then((data) => res.json(data))
 			.catch((err) => {
 				for (let key in err.errors) {

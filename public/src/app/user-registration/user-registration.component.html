@@ -1,43 +1,79 @@
 <div class="card has-background-grey-dark">
 	<form (submit)="onRegSubmit()">
 		<header class="card-header has-background-primary-dark">
-			<p class="card-header-title is-centered is-size-3 has-text-white-ter">Register</p>
+			<p class="card-header-title is-centered is-size-3 has-text-white-ter">
+				Register
+			</p>
 		</header>
 		<div class="card-content">
 			<div class="field">
 				<label class="label has-text-light">First Name</label>
 				<div class="control">
-					<input class="input has-background-grey has-text-light" type="text" name="first_name" placeholder="eg John">
+					<input
+						class="input has-background-grey has-text-light"
+						type="text"
+						name="first_name"
+						placeholder="eg John"
+						[(ngModel)]="user.first_name"
+					/>
 				</div>
 			</div>
 			<div class="field">
 				<label class="label has-text-light">Last Name</label>
 				<div class="control">
-					<input class="input has-background-grey has-text-light" type="text" name="last_name" placeholder="eg Smith">
+					<input
+						class="input has-background-grey has-text-light"
+						type="text"
+						name="last_name"
+						placeholder="eg Smith"
+						[(ngModel)]="user.last_name"
+					/>
 				</div>
 			</div>
 			<div class="field">
 				<label class="label has-text-light">Username:</label>
 				<div class="control">
-					<input class="input has-background-grey has-text-light" type="text" name="user_name" placeholder="eg jsmith">
+					<input
+						class="input has-background-grey has-text-light"
+						type="text"
+						name="user_name"
+						placeholder="eg jsmith"
+						[(ngModel)]="user.user_name"
+					/>
 				</div>
 			</div>
 			<div class="field">
 				<label class="label has-text-light">Email</label>
 				<div class="control">
-					<input class="input has-background-grey has-text-light" type="email" name="register_email" placeholder="johnsmith@example.com">
+					<input
+						class="input has-background-grey has-text-light"
+						type="email"
+						name="register_email"
+						placeholder="johnsmith@example.com"
+						[(ngModel)]="user.email"
+					/>
 				</div>
 			</div>
 			<div class="field">
 				<label class="label has-text-light">Password</label>
 				<div class="control">
-					<input class="input has-background-grey has-text-light" type="password" name="register_password">
+					<input
+						class="input has-background-grey has-text-light"
+						type="password"
+						name="register_password"
+						[(ngModel)]="user.password"
+					/>
 				</div>
 			</div>
 			<div class="field">
 				<label class="label has-text-light">Confirm PW</label>
 				<div class="control">
-					<input class="input has-background-grey has-text-light" type="password" name="register_confirm_password">
+					<input
+						class="input has-background-grey has-text-light"
+						type="password"
+						name="register_confirm_password"
+						[(ngModel)]="user.confirm_password"
+					/>
 				</div>
 			</div>
 			<div class="field has-text-centered">
