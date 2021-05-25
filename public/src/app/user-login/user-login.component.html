@@ -1,5 +1,4 @@
 <div class="card has-background-grey-dark">
-	
 	<form (submit)="onLoginSubmit()">
 		<header class="card-header has-background-success-dark">
 			<p class="card-header-title is-centered is-size-3 has-text-white-ter">
@@ -8,7 +7,7 @@
 		</header>
 		<div class="card-content">
 			<div class="field">
-				{{userError}}
+				{{ userError }}
 				<label class="label has-text-light">Username</label>
 				<div class="control">
 					<input
@@ -16,7 +15,7 @@
 						type="email"
 						name="login_email"
 						placeholder="johnsmith@example.com"
-            [(ngModel)]='user.user_name'
+						[(ngModel)]="user.user_name"
 					/>
 				</div>
 			</div>
@@ -27,7 +26,7 @@
 						class="input has-background-grey has-text-light"
 						type="password"
 						name="login_password"
-            [(ngModel)]= 'user.password'
+						[(ngModel)]="user.password"
 					/>
 				</div>
 			</div>

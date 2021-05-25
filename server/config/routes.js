@@ -1,5 +1,5 @@
 const User = require("../controller/users.js");
-const Madlib = require("../controller/madlibs.js")
+const Madlib = require("../controller/madlibs.js");
 
 module.exports = function (app) {
 	app.get("/", (req, res) => {});
@@ -25,18 +25,18 @@ module.exports = function (app) {
 	});
 
 	app.post("/madlibs/add", (req, res) => {
-		Madlib.createMadlib(req, res)
+		Madlib.createMadlib(req, res);
 	});
 
 	app.get("/madlibs/:id", (req, res) => {
-		Madlib.showMadlib(req, res)
+		Madlib.showMadlib(req, res);
 	});
 
 	app.get("/madlibs", (req, res) => {
-		Madlib.showAll(req, res)
+		Madlib.showAll(req, res);
 	});
 
-	app.put('/madlibs/likes', (req, res) => {
-		Madlib.update(req, res)
-	})
+	app.put("/madlibs/likes", (req, res) => {
+		Madlib.update(req, res);
+	});
 };

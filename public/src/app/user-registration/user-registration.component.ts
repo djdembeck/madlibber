@@ -8,9 +8,9 @@ import { HttpService } from "../http.service";
 	styleUrls: ["./user-registration.component.css"],
 })
 export class UserRegistrationComponent implements OnInit {
-	@Input()settings
-	user: any
-	errors: any
+	@Input() settings;
+	user: any;
+	errors: any;
 
 	constructor(
 		private _http: HttpService,
@@ -19,19 +19,17 @@ export class UserRegistrationComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.user = {}
+		this.user = {};
 	}
 
-	onRegSubmit(){
-		this._http.createUser(this.user)
-		.subscribe((data:any)=>{
-			console.log('user created', data)
-			if (data.errors){
-				console.log(data.errors)
+	onRegSubmit() {
+		this._http.createUser(this.user).subscribe((data: any) => {
+			console.log("user created", data);
+			if (data.errors) {
+				console.log(data.errors);
+			} else {
+				this._router.navigate(["/"]);
 			}
-			else {
-				this._router.navigate(['/'])
-			}
-		})
+		});
 	}
 }
