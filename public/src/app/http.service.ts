@@ -28,5 +28,19 @@ export class HttpService {
 			return this._http.delete(`user/delete/${user._id}`)
 		}
 
+		createMadlib(madlib:any){
+			return this._http.post('/madlibs/add', madlib)
+		}
 
+		showMadlibId(id:any){
+			return this._http.get(`/madlibs/${id}`)
+		}
+
+		displayMadlibs(){
+			return this._http.get('/madlibs')
+		}
+
+		addlikes(id:any){
+			return this._http.put(`/madlibs/${id}/likes`, id)
+		}
 }
