@@ -10,6 +10,7 @@ import { MadlibTopComponent } from "./madlib-top/madlib-top.component";
 import { MadlibCreateComponent } from "./madlib-create/madlib-create.component";
 import { MadlibListComponent } from "./madlib-list/madlib-list.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { MadlibShowComponent } from "./madlib-show/madlib-show.component";
 
 const routes: Routes = [
 	{ path: "", component: DashboardComponent },
@@ -18,7 +19,9 @@ const routes: Routes = [
 	{ path: "user/edit", component: UserEditComponent },
 	{ path: "user/show", component: UserProfileComponent },
 	{ path: "lib/create", component: MadlibCreateComponent },
-	{ path: "lib/:id/show", component: UserProfileComponent },
+	{ path: "user/:id", component: UserListComponent },
+	{ path: "lib/:id", component: MadlibShowComponent}
+		
 ];
 
 @NgModule({

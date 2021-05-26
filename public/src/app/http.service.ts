@@ -44,10 +44,18 @@ export class HttpService {
 	}
 
 	deleteMadlib(madlib){
-		return this._http.delete(`/madlib/${madlib._id}`)
+		return this._http.delete(`/madlibs/${madlib._id}/remove`)
 	}
 
 	genMadLib() {
 		return this._http.get<any>(`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25`)
 	}
+
+	recentMadlibs(){
+		return this._http.get('/madlibs/recent')
+	}
+
+	showAllUsers(){
+        return this._http.get('/users')
+    }
 }

@@ -50,4 +50,6 @@ export class MadlibShowComponent implements OnInit {
 			})
 		})
   }
+
+
 }
