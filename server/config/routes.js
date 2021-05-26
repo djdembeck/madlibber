@@ -16,6 +16,10 @@ module.exports = function (app) {
 		User.showUser(req, res);
 	});
 
+	app.get("/users", (req,res)=>{
+		User.showAllUsers(req,res)
+	})
+
 	app.put("/user/update/:id", (req, res) => {
 		User.updateUser(req, res);
 	});

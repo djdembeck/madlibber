@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { HttpService } from "../http.service";
 
 @Component({
 	selector: "app-user-profile",
@@ -6,7 +8,16 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./user-profile.component.css"],
 })
 export class UserProfileComponent implements OnInit {
-	constructor() {}
+	@Input()settings
+	user:any
 
-	ngOnInit() {}
+	constructor(
+		private _http: HttpService,
+		private _route: ActivatedRoute,
+		private _router: Router
+	) {}
+
+	ngOnInit() {
+		this.user = ''
+	}
 }

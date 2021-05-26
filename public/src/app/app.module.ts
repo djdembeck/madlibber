@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { localStorage } from 'localStorage'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { MadlibShowComponent } from './madlib-show/madlib-show.component';
 		DashboardComponent,
 		NavbarComponent,
 		MadlibShowComponent,
+		
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
 	providers: [HttpService],

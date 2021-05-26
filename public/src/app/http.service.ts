@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 	providedIn: "root",
 })
 export class HttpService {
-	constructor(private _http: HttpClient) {}
+	constructor(private _http: HttpClient) { }
 
 	// You need to enter an API key to use
 	WORD_API_KEY = ""
@@ -22,6 +22,10 @@ export class HttpService {
 		return this._http.get(`/user/show/${id}`);
 	}
 
+	showAllUsers(){
+		return this._http.get('/users')
+	}
+		
 	updateUser(user: any) {
 		return this._http.put(`/user/update/${user._id}`, user)
 	}
