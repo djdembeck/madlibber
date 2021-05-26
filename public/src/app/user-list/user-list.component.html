@@ -1,1 +1,14 @@
-<p>user-list works!</p>
+<div>
+    <h2>{{user.user_name}}</h2>
+    <h3>{{user.first_name}} {{user.last_name}}</h3>
+    <h3>Total {{totalLikes}}</h3>
+</div>
+
+<div>
+    <h4>List of Libs</h4>
+    <div  *ngFor="let lib of user.madlibs">
+        <p>{{lib.madlib}}</p>
+        <p>{{lib.likes}} Likes</p>
+    </div>
+</div>
+

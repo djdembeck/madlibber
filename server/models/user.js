@@ -1,5 +1,5 @@
-var mongoose = require('../config/mongoose.js')
-const {MadlibSchema} = require('./madlib.js')
+var mongoose = require("../config/mongoose.js");
+const { MadlibSchema } = require("./madlib.js");
 
 const UserSchema = new mongoose.Schema(
 	{
@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema(
 			required: [true, "Password is required"],
 			minlength: [8, "Password must be at least 8 characters"],
 		},
-		madlibs: [MadlibSchema]
+		madlibs: [MadlibSchema],
 	},
 	{ timestamps: true }
 );

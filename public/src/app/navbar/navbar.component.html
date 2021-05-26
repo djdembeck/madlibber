@@ -23,8 +23,12 @@
 						<a class="button is-success" [routerLink]="['/login']"> Log in</a>
 					</ng-container>
 					<ng-container *ngIf="user">
-						<a class="button is-primary" [routerLink]="['/lib/create']">Create Mad Lib</a>
-						<a class="button is-light" [routerLink]="['/profile']">View Profile</a>
+						<a class="button is-primary" [routerLink]="['/lib/create']"
+							>Create Mad Lib</a
+						>
+						<a class="button is-light" [routerLink]="['/profile']"
+							>View Profile</a
+						>
 						<a class="button is-danger" [routerLink]="['/logout']">Logout</a>
 					</ng-container>
 				</div>

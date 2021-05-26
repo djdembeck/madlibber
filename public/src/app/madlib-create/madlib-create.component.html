@@ -1,1 +1,8 @@
-<p>madlib-create works!</p>
+<h2>{{user.user_name}}</h2>
+<div>
+    <form (submit)='onNewMadlib()'>
+        <label>Madlib </label>
+        <textarea name="newMadlib" [(ngModel)]="newMadlib.madlib" cols="30" rows="10"></textarea>
+        <button type="submit">Create Mad Lib</button>
+    </form>
+</div>

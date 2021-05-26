@@ -9,5 +9,3 @@ export class AppComponent {
 	title = "public";
 	user = localStorage.getItem("user");
 }
-
-	

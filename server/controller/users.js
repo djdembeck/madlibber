@@ -1,5 +1,5 @@
 const { User } = require("../models/user");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 
 module.exports = {
 	createUser: function (req, res) {
@@ -26,21 +26,24 @@ module.exports = {
 	},
 
 	userLogin: function (req, res) {
-		console.log(req.body)
+		console.log(req.body);
 		User.findOne({ user_name: req.body.user_name })
 			.then((user) => {
 				bcrypt.compare(req.body.password, user.password)
 					.then((result) => {
 						if (result) {
 							console.log("User is logged in.");
-							res.json(result)
-						} 
-						else {res.json("Password is incorrect")}
+							res.json(result);
+						} else {
+							res.json("Password is incorrect");
+						}
 					})
-					.catch((err) => {res.json("Password is incorrect")});
+					.catch((err) => {
+						res.json("Password is incorrect");
+					});
 			})
 			.catch((err) => {
-				console.log('User name not in DB')
+				console.log("User name not in DB");
 				res.json("Username does not exist");
 			});
 	},
@@ -56,7 +59,9 @@ module.exports = {
 	},
 
 	updateUser: function (req, res) {
-		User.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true })
+		User.findOneAndUpdate({ _id: req.params.id }, req.body, {
+			runValidators: true,
+		})
 			.then((data) => res.json(data))
 			.catch((err) => res.json(err))
 	},
