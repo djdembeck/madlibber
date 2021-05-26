@@ -3,6 +3,6 @@
     <div *ngFor='let lib of madlibs | slice: 0: 9'>
         <p>{{lib.madlib}}</p>
         <p>{{lib.likes}}</p>
-        <button *ngFor="let user of users" *ngIf="user.mablibs.contains(lib)"></button>
+        <ng-container *ngIf="user.mablibs.contains(lib)"><button *ngFor="let user of users" ></button></ng-container>
     </div>
 </div>
