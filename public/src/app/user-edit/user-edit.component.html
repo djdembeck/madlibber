@@ -7,62 +7,62 @@
 		</header>
 		<div class="card-content">
 			<div class="field">
+				{{firstNameErr}}
 				<label class="label has-text-light">First Name</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="text"
 						name="first_name"
+						[(ngModel)]= 'user.first_name'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{lastNameErr}}
 				<label class="label has-text-light">Last Name</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="text"
 						name="last_name"
+						[(ngModel)]= 'user.last_name'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{userNameErr}}
 				<label class="label has-text-light">Username:</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="text"
 						name="user_name"
+						[(ngModel)]= 'user.user_name'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{emailErr}}
 				<label class="label has-text-light">Email</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="email"
 						name="edit_email"
+						[(ngModel)]= 'user.email'
 					/>
 				</div>
 			</div>
 			<div class="field">
+				{{pwError}}
 				<label class="label has-text-light">Password</label>
 				<div class="control">
 					<input
 						class="input has-background-grey has-text-light"
 						type="password"
 						name="edit_password"
-					/>
-				</div>
-			</div>
-			<div class="field">
-				<label class="label has-text-light">Confirm PW</label>
-				<div class="control">
-					<input
-						class="input has-background-grey has-text-light"
-						type="password"
-						name="edit_confirm_password"
+						[(ngModel)]= 'user.password'
 					/>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 						<button class="button is-success" type="submit">
 							Confirm Edit
 						</button>
-						<button class="button is-danger">Delete Account</button>
+						<button class="button is-danger" (click)='deleteUser(user)'>Delete Account</button>
 					</div>
 				</div>
 			</div>
