@@ -8,15 +8,15 @@ import { HttpService } from "../http.service";
 	styleUrls: ["./user-registration.component.css"],
 })
 export class UserRegistrationComponent implements OnInit {
-	@Input()settings
-	user: any
-	errors: any
-	firstNameErr: any
-	lastNameErr:any
-	userNameErr:any
-	emailErr:any
-	pwError: any
-	passwordError: any
+	@Input() settings;
+	user: any;
+	errors: any;
+	firstNameErr: any;
+	lastNameErr: any;
+	userNameErr: any;
+	emailErr: any;
+	pwError: any;
+	passwordError: any;
 
 	constructor(
 		private _http: HttpService,
@@ -25,42 +25,36 @@ export class UserRegistrationComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.user = {}
-		this.passwordError = ''
-		this.firstNameErr = ''
-		this.lastNameErr = ''
-		this.userNameErr = ''
-		this.emailErr= ''
-		this.pwError= ''
+		this.user = {};
+		this.passwordError = "";
+		this.firstNameErr = "";
+		this.lastNameErr = "";
+		this.userNameErr = "";
+		this.emailErr = "";
+		this.pwError = "";
 	}
 
-	onRegSubmit(){
-		this._http.createUser(this.user)
-		.subscribe((data:any)=>{
-	
-			if (data.errors){
+	onRegSubmit() {
+		this._http.createUser(this.user).subscribe((data: any) => {
+			if (data.errors) {
 				if (data.errors.first_name)
-					this.firstNameErr = data.errors.first_name.message
+					this.firstNameErr = data.errors.first_name.message;
 
 				if (data.errors.last_name)
-					this.lastNameErr = data.errors.last_name.message
-				
+					this.lastNameErr = data.errors.last_name.message;
+
 				if (data.errors.user_name)
-					this.userNameErr = data.errors.user_name.message
+					this.userNameErr = data.errors.user_name.message;
 
-				if (data.errors.email)
-					this.emailErr = data.errors.email.message
+				if (data.errors.email) this.emailErr = data.errors.email.message;
 
-				if (data.errors.password)
-					this.pwError = data.errors.password.message
-			}
-			else if (data == false)
-				this.passwordError = 'Password does not match confirm password.'
-			
+				if (data.errors.password) this.pwError = data.errors.password.message;
+			} else if (data == false)
+				this.passwordError = "Password does not match confirm password.";
 			else {
-				console.log('user created')
-				this._router.navigate(['/login'])
+				console.log("user created");
+				this._router.navigate(["/login"]);
 			}
-		})
+		});
 	}
 }

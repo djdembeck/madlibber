@@ -5,10 +5,10 @@ import { HttpClient } from "@angular/common/http";
 	providedIn: "root",
 })
 export class HttpService {
-	constructor(private _http: HttpClient) { }
+	constructor(private _http: HttpClient) {}
 
 	// You need to enter an API key to use
-	WORD_API_KEY = ""
+	WORD_API_KEY = "";
 
 	createUser(user: any) {
 		return this._http.post("/user/register", user);
@@ -22,51 +22,52 @@ export class HttpService {
 		return this._http.get(`/user/show/${id}`);
 	}
 
-	showAllUsers(){
-		return this._http.get('/users')
+	showAllUsers() {
+		return this._http.get("/users");
 	}
-		
+
 	updateUser(user: any) {
-		return this._http.put(`/user/update/${user._id}`, user)
+		return this._http.put(`/user/update/${user._id}`, user);
 	}
 
 	deleteUser(user: any) {
 		return this._http.delete(`/user/delete/${user._id}`);
 	}
 
-	createMadlib(madlib:any, user:any){
-		return this._http.post(`/madlibs/${user._id}/add`, {madlib: madlib})
+	createMadlib(madlib: any, user: any) {
+		return this._http.post(`/madlibs/${user._id}/add`, { madlib: madlib });
 	}
 
-	showMadlibId(id:any){
-		return this._http.get(`/madlibs/${id}`)
+	showMadlibId(id: any) {
+		return this._http.get(`/madlibs/${id}`);
 	}
 
-	displayMadlibs(){
-		return this._http.get('/madlibs')
+	displayMadlibs() {
+		return this._http.get("/madlibs");
 	}
 
-	addlikes(id:any){
-		return this._http.put(`/madlibs/${id}/likes`, id)
+	addlikes(id: any) {
+		return this._http.put(`/madlibs/${id}/likes`, id);
 	}
 
-	deleteMadlib(madlib){
-		return this._http.delete(`/madlibs/${madlib._id}/remove`)
+	deleteMadlib(madlib) {
+		return this._http.delete(`/madlibs/${madlib._id}/remove`);
 	}
 
 	genMadLib() {
-		return this._http.get<any>(`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=10`)
+		return this._http.get<any>(
+			`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=10`
+		);
 	}
 
-	validateWord(word:string) {
-		return this._http.get<any>(`https://wordsapiv1.p.rapidapi.com/words/${word}`,{headers: {'X-RapidAPI-key': `${this.WORD_API_KEY}`}})
+	validateWord(word: string) {
+		return this._http.get<any>(
+			`https://wordsapiv1.p.rapidapi.com/words/${word}`,
+			{ headers: { "X-RapidAPI-key": `${this.WORD_API_KEY}` } }
+		);
 	}
 
-	recentMadlibs(){
-		return this._http.get('/madlibs/recent')
+	recentMadlibs() {
+		return this._http.get("/madlibs/recent");
 	}
-
-	showAllUsers(){
-        return this._http.get('/users')
-    }
 }

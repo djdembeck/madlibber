@@ -8,8 +8,8 @@ import { HttpService } from "../http.service";
 	styleUrls: ["./user-profile.component.css"],
 })
 export class UserProfileComponent implements OnInit {
-	@Input()settings
-	user:any
+	@Input() settings;
+	user: any;
 
 	constructor(
 		private _http: HttpService,
@@ -18,6 +18,6 @@ export class UserProfileComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.user = ''
+		this.user = "";
 	}
 }

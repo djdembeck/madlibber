@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { HttpService } from "../http.service";
-import localStorage from "localStorage"
+import localStorage from "localStorage";
 
 @Component({
 	selector: "app-user-top",
@@ -9,8 +9,7 @@ import localStorage from "localStorage"
 	styleUrls: ["./user-top.component.css"],
 })
 export class UserTopComponent implements OnInit {
-	users: any
-
+	users: any;
 
 	constructor(
 		private _httpService: HttpService,
@@ -19,12 +18,12 @@ export class UserTopComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.users = []
-		this.showAllUsers()
+		this.users = [];
+		this.showAllUsers();
 	}
-	showAllUsers(){
-		this._httpService.showAllUsers().subscribe(data=>{
-			this.users = data
-		})
+	showAllUsers() {
+		this._httpService.showAllUsers().subscribe((data) => {
+			this.users = data;
+		});
 	}
 }

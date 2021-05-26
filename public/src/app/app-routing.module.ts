@@ -20,8 +20,7 @@ const routes: Routes = [
 	{ path: "user/show", component: UserProfileComponent },
 	{ path: "lib/create", component: MadlibCreateComponent },
 	{ path: "user/:id", component: UserListComponent },
-	{ path: "lib/:id", component: MadlibShowComponent}
-		
+	{ path: "lib/:id", component: MadlibShowComponent },
 ];
 
 @NgModule({

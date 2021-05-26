@@ -16,9 +16,9 @@ module.exports = function (app) {
 		User.showUser(req, res);
 	});
 
-	app.get("/users", (req,res)=>{
-		User.showAllUsers(req,res)
-	})
+	app.get("/users", (req, res) => {
+		User.showAllUsers(req, res);
+	});
 
 	app.put("/user/update/:id", (req, res) => {
 		User.updateUser(req, res);
@@ -40,19 +40,19 @@ module.exports = function (app) {
 		Madlib.showAll(req, res);
 	});
 
-	app.put('/madlibs/:id/likes', (req, res) => {
-		Madlib.update(req, res)
-	})
+	app.put("/madlibs/:id/likes", (req, res) => {
+		Madlib.update(req, res);
+	});
 
-	app.delete('/madlibs/:id/remove', (req, res) => {
-		Madlib.destroy(req, res)
-	})
+	app.delete("/madlibs/:id/remove", (req, res) => {
+		Madlib.destroy(req, res);
+	});
 
-	app.get('/madlibs/recent', (req, res) => {
-		Madlib.sort(req, res)
-	})
+	app.get("/madlibs/recent", (req, res) => {
+		Madlib.sort(req, res);
+	});
 
-	app.get("/users", (req,res)=>{
-        User.showAllUsers(req,res)
-    })
+	app.get("/users", (req, res) => {
+		User.showAllUsers(req, res);
+	});
 };

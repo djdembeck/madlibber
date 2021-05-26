@@ -59,15 +59,16 @@ module.exports = {
 			})
 			.catch((err) => res.json(err));
 	},
-    destroy: (req, res) => {
-        Madlib.deleteOne({_id: req.params.id})
-            .then(deletedMadlib => res.json(deletedMadlib))
-            .catch((err) => res.json(err));
-            // do the User have to be updated??
-    },
-    sort: (req, res) => {
-        Madlib.find().sort({createdAt: 'desc'})
-            .then(data => res.json(data))
-            .catch((err) => res.json(err))
-    }
+	destroy: (req, res) => {
+		Madlib.deleteOne({ _id: req.params.id })
+			.then((deletedMadlib) => res.json(deletedMadlib))
+			.catch((err) => res.json(err));
+		// do the User have to be updated??
+	},
+	sort: (req, res) => {
+		Madlib.find()
+			.sort({ createdAt: "desc" })
+			.then((data) => res.json(data))
+			.catch((err) => res.json(err));
+	},
 };

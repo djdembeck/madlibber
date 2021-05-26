@@ -9,12 +9,12 @@ import { Router } from "@angular/router";
 export class NavbarComponent implements OnInit {
 	constructor(private _router: Router) {}
 
-	object: any
-	user: any
+	object: any;
+	user: any;
 
 	ngOnInit() {
 		this.object = localStorage.getItem("user");
-		this.user = JSON.parse(this.object)
+		this.user = JSON.parse(this.object);
 	}
 
 	logout() {
