@@ -1,5 +1,6 @@
 const { User } = require("../models/user");
 const bcrypt = require("bcrypt");
+const LocalStorage = require("localStorage")
 
 module.exports = {
 	createUser: function (req, res) {
@@ -26,14 +27,16 @@ module.exports = {
 	},
 
 	userLogin: function (req, res) {
-		console.log(req.body);
+		// console.log(req.body);
 		User.findOne({ user_name: req.body.user_name })
 			.then((user) => {
 				bcrypt.compare(req.body.password, user.password)
 					.then((result) => {
 						if (result) {
 							console.log("User is logged in.");
-							res.json(result);
+							LocalStorage.setItem("user", user);
+							console.log(LocalStorage.getItem('user'))
+							res.json(user);
 						} else {
 							res.json("Password is incorrect");
 						}
@@ -50,12 +53,14 @@ module.exports = {
 
 	showUser: function (req, res) {
 		User.findOne({ _id: req.params.id })
-			.then((user) => {
-				res.json(user);
-			})
-			.catch((err) => {
-				res.json(err);
-			});
+			.then((user) => res.json(user))
+			.catch((err) => res.json(err))
+	},
+
+	showAllUsers: function (req, res){
+		User.find()
+			.then((user)=>res.json(user))
+			.catch((err)=>res.json(err))
 	},
 
 	updateUser: function (req, res) {

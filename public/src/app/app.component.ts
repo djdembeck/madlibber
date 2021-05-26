@@ -7,5 +7,5 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
 	title = "public";
-	user = localStorage.getItem("user");
+	public user = localStorage.getItem("user");
 }

@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 	providedIn: "root",
 })
 export class HttpService {
-	constructor(private _http: HttpClient) {}
+	constructor(private _http: HttpClient) { }
 
 	createUser(user: any) {
 		return this._http.post("/user/register", user);
@@ -19,6 +19,10 @@ export class HttpService {
 		return this._http.get(`/user/show/${id}`);
 	}
 
+	showAllUsers(){
+		return this._http.get('/users')
+	}
+		
 	updateUser(user: any) {
 		return this._http.put(`/user/update/${user._id}`, user)
 	}
