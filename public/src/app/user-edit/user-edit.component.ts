@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { HttpService } from "../http.service";
 
-
 @Component({
 	selector: "app-user-edit",
 	templateUrl: "./user-edit.component.html",
 	styleUrls: ["./user-edit.component.css"],
 })
+
 export class UserEditComponent implements OnInit {
 	@Input()settings
 	user: any

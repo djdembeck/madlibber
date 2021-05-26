@@ -12,11 +12,19 @@ export class HttpService {
 	}
 
 	userLogin(user: any) {
-		return this._http.post(`user/login`, user);
+		return this._http.post(`/user/login`, user);
 	}
 
 	showUser(id: string) {
-		return this._http.get(`user/show/${id}`);
+		return this._http.get(`/user/show/${id}`);
+	}
+
+	updateUser(user: any) {
+		return this._http.put(`/user/update/${user._id}`, user)
+	}
+
+	deleteUser(user: any) {
+		return this._http.delete(`/user/delete/${user._id}`);
 	}
 
 	createMadlib(madlib:any, user:any){
@@ -37,5 +45,9 @@ export class HttpService {
 
 	deleteMadlib(madlib){
 		return this._http.delete(`/madlib/${madlib._id}`)
+	}
+
+	genMadLib() {
+		return this._http.get<any>(`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25`)
 	}
 }
