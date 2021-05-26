@@ -27,8 +27,9 @@ export class UserLoginComponent implements OnInit {
 	onLoginSubmit() {
 		this._http.userLogin(this.user).subscribe((data: any) => {
 			console.log("logged in", data);
-			if (data == true) {
-				localStorage.setItem("user", this.user);
+			if (data._id) {
+				console.log(data)
+				localStorage.setItem("user", JSON.stringify(data));
 				this._router.navigate(["/"]);
 			} else {
 				this.userError = data;
