@@ -20,7 +20,7 @@ export class UserLoginComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.user = {};
+		this.user = [];
 		this.userError = "";
 	}
 

@@ -16,7 +16,7 @@ export class UserListComponent implements OnInit {
 	private _router: Router,
     private _httpService: HttpService
 	) {
-		this.user = {}
+		this.user = []
 		this.totalLikes = 0;
 	}
 
