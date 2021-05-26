@@ -24,7 +24,7 @@ module.exports = function (app) {
 		User.deleteUser(req, res);
 	});
 
-	app.post("/madlibs/add", (req, res) => {
+	app.post("/madlibs/:id/add", (req, res) => {
 		Madlib.createMadlib(req, res);
 	});
 

@@ -9,9 +9,13 @@ import { Router } from "@angular/router";
 export class NavbarComponent implements OnInit {
 	constructor(private _router: Router) {}
 
-	user = localStorage.getItem("user");
+	object: any
+	user: any
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.object = localStorage.getItem("user");
+		this.user = JSON.parse(this.object)
+	}
 
 	logout() {
 		localStorage.removeItem("user");

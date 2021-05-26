@@ -33,7 +33,7 @@ module.exports = {
 					.then((result) => {
 						if (result) {
 							console.log("User is logged in.");
-							res.json(result);
+							res.json(user);
 						} else {
 							res.json("Password is incorrect");
 						}
