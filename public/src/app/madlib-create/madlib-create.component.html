@@ -1,8 +1,24 @@
-<h2>{{user.user_name}}</h2>
-<div>
-    <form (submit)='onNewMadlib()'>
-        <label>Madlib </label>
-        <textarea name="newMadlib" [(ngModel)]="newMadlib.madlib" cols="30" rows="10"></textarea>
-        <button type="submit">Create Mad Lib</button>
-    </form>
+<div class="card" *ngIf='madlib'>
+	<div class="card-header">
+		<div class="card-header-title">
+			<p class="title">Create a Madlib: {{madlib.title}}</p>
+		</div>
+	</div>
+	<form (submit)='onNewMadlib()'>
+		<div class="card-content">	
+			<div class="content">
+				<span class="is-vcentered has-text-centered" *ngFor='let control of words_field.controls; let i = index'>
+					<ng-container *ngIf='madlib.value[i]'>
+						{{madlib.value[i]}}
+						<input class="input is-inline is-vcentered has-text-centered is-small" size="{{madlib.blanks[i].length}}" type="text" [formControl]="words_field.controls[i]" placeholder="{{madlib.blanks[i]}}" required>
+					</ng-container>
+				</span>
+			</div>
+		</div>
+			<div class="card-footer">
+				<div class="card-footer-item">
+					<button class="button is-success" type="submit">Create Mad Lib</button>
+				</div>
+			</div>
+	</form>
 </div>

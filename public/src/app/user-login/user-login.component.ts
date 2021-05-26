@@ -20,11 +20,6 @@ export class UserLoginComponent implements OnInit {
 		private _http: HttpService,
 		private _route: ActivatedRoute,
 		private _router: Router
-		) { 
-			// const user_in_storage = localStorage.getItem(("user"))
-			// const logged_user = JSON.parse(user_in_storage)
-			// console.log(this.log_user.user_name)
-		}
 		
 		ngOnInit() {
 			this.user = {};
@@ -48,5 +43,4 @@ export class UserLoginComponent implements OnInit {
 				}
 			});
 		}
-		
 	}

@@ -7,6 +7,9 @@ import { HttpClient } from "@angular/common/http";
 export class HttpService {
 	constructor(private _http: HttpClient) { }
 
+	// You need to enter an API key to use
+	WORD_API_KEY = ""
+
 	createUser(user: any) {
 		return this._http.post("/user/register", user);
 	}
@@ -32,7 +35,7 @@ export class HttpService {
 	}
 
 	createMadlib(madlib:any, user:any){
-		return this._http.post('/madlibs/add', madlib, user)
+		return this._http.post(`/madlibs/${user._id}/add`, {madlib: madlib})
 	}
 
 	showMadlibId(id:any){
@@ -48,10 +51,22 @@ export class HttpService {
 	}
 
 	deleteMadlib(madlib){
-		return this._http.delete(`/madlib/${madlib._id}`)
+		return this._http.delete(`/madlibs/${madlib._id}/remove`)
 	}
 
 	genMadLib() {
-		return this._http.get<any>(`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25`)
+		return this._http.get<any>(`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=10`)
 	}
+
+	validateWord(word:string) {
+		return this._http.get<any>(`https://wordsapiv1.p.rapidapi.com/words/${word}`,{headers: {'X-RapidAPI-key': `${this.WORD_API_KEY}`}})
+	}
+
+	recentMadlibs(){
+		return this._http.get('/madlibs/recent')
+	}
+
+	showAllUsers(){
+        return this._http.get('/users')
+    }
 }

@@ -28,7 +28,7 @@ module.exports = function (app) {
 		User.deleteUser(req, res);
 	});
 
-	app.post("/madlibs/add", (req, res) => {
+	app.post("/madlibs/:id/add", (req, res) => {
 		Madlib.createMadlib(req, res);
 	});
 
@@ -44,7 +44,15 @@ module.exports = function (app) {
 		Madlib.update(req, res)
 	})
 
-	app.delete('/madlib/:id/remove', (req, res) => {
+	app.delete('/madlibs/:id/remove', (req, res) => {
 		Madlib.destroy(req, res)
 	})
+
+	app.get('/madlibs/recent', (req, res) => {
+		Madlib.sort(req, res)
+	})
+
+	app.get("/users", (req,res)=>{
+        User.showAllUsers(req,res)
+    })
 };

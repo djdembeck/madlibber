@@ -19,7 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MadlibShowComponent } from './madlib-show/madlib-show.component';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { MadlibShowComponent } from './madlib-show/madlib-show.component';
 		MadlibShowComponent,
 		
 	],
-	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
 	providers: [HttpService],
 	bootstrap: [AppComponent],
 })

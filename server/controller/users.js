@@ -76,4 +76,9 @@ module.exports = {
 			.then((data) => res.json(data))
 			.catch((err) => res.json(err));
 	},
+	showAllUsers: function (req, res){
+        User.find()
+            .then((user)=>res.json(user))
+            .catch((err)=>res.json(err))
+    }
 };
