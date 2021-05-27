@@ -4,7 +4,6 @@ const MadlibSchema = new mongoose.Schema(
 	{
 		title: {
             type: String,
-            required: [true, "Madlib title is required"]
         },
         madlib: {
 			type: String,

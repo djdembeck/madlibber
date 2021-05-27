@@ -7,4 +7,4 @@
 <div *ngIf="liked">
 	<button (click)="onLikeSubmit()">Like</button>
 </div>
-<button [routerLink]="['/user/', user._id, 'show']">Lib Creator</button>
+<button [routerLink]="['/user', madlib.user._id]">Lib Creator</button>

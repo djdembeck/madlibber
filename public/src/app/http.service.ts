@@ -8,7 +8,7 @@ export class HttpService {
 	constructor(private _http: HttpClient) {}
 
 	// You need to enter an API key to use
-	WORD_API_KEY = "";
+	WORD_API_KEY = "8a696b0fcemsh4b7c0d5d0167e27p132223jsn6b1b1a85b2a6";
 
 	createUser(user: any) {
 		return this._http.post("/user/register", user);
@@ -47,7 +47,7 @@ export class HttpService {
 	}
 
 	addlikes(id: any) {
-		return this._http.put(`/madlibs/${id}/likes`, id);
+		return this._http.post(`/madlibs/${id}/likes`, id);
 	}
 
 	deleteMadlib(madlib) {
@@ -69,5 +69,9 @@ export class HttpService {
 
 	recentMadlibs() {
 		return this._http.get("/madlibs/recent");
+	}
+
+	top5Madlibs(){
+		return this._http.get("/madlibs/top5");
 	}
 }

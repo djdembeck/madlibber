@@ -37,17 +37,22 @@ module.exports = function (app) {
 		Madlib.showAll(req, res);
 	});
 	
-	app.put("/madlibs/:id/likes", (req, res) => {
-		Madlib.update(req, res);
+	app.post("/madlibs/:id/likes", (req, res) => {
+		Madlib.createLikes(req, res);
 	});
 	
 	app.delete("/madlibs/:id/remove", (req, res) => {
 		Madlib.destroy(req, res);
 	});
+
+	app.get("/madlibs/top5", (req, res) => {
+		Madlib.sortTop5(req, res)
+	});
 	
 	app.get("/madlibs/recent", (req, res) => {
-		Madlib.sort(req, res);
+		Madlib.sortRecent(req, res);
 	});
+
 	app.get("/madlibs/:id", (req, res) => {
 		Madlib.showMadlib(req, res);
 	});
