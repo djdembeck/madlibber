@@ -47,7 +47,7 @@ export class HttpService {
 	}
 
 	addlikes(id: any) {
-		return this._http.put(`/madlibs/${id}/likes`, id);
+		return this._http.post(`/madlibs/${id}/likes`, id);
 	}
 
 	deleteMadlib(madlib) {
@@ -69,5 +69,9 @@ export class HttpService {
 
 	recentMadlibs() {
 		return this._http.get("/madlibs/recent");
+	}
+
+	top5Madlibs(){
+		return this._http.get("/madlibs/top5");
 	}
 }
