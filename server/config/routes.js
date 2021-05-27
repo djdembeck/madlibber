@@ -31,7 +31,6 @@ module.exports = function (app) {
 	app.post("/madlibs/:id/add", (req, res) => {
 		Madlib.createMadlib(req, res);
 	});
-
 	
 	app.get("/madlibs", (req, res) => {
 		Madlib.showAll(req, res);
