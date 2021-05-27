@@ -13,7 +13,10 @@ export class NavbarComponent implements OnInit {
 	user: any;
 
 	ngOnInit() {
-		this.user = {"_id": localStorage.getItem("user_id"), "user_name": localStorage.getItem("user_name")}
+		this.user = {
+			_id: localStorage.getItem("user_id"),
+			user_name: localStorage.getItem("user_name"),
+		};
 	}
 
 	logout() {

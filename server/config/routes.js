@@ -31,26 +31,26 @@ module.exports = function (app) {
 	app.post("/madlibs/:id/add", (req, res) => {
 		Madlib.createMadlib(req, res);
 	});
-	
+
 	app.get("/madlibs", (req, res) => {
 		Madlib.showAll(req, res);
 	});
-	
+
 	app.put("/madlibs/:id/likes", (req, res) => {
 		Madlib.update(req, res);
 	});
-	
+
 	app.delete("/madlibs/:id/remove", (req, res) => {
 		Madlib.destroy(req, res);
 	});
-	
+
 	app.get("/madlibs/recent", (req, res) => {
 		Madlib.sort(req, res);
 	});
 	app.get("/madlibs/:id", (req, res) => {
 		Madlib.showMadlib(req, res);
 	});
-	
+
 	app.get("/users", (req, res) => {
 		User.showAllUsers(req, res);
 	});

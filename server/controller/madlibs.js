@@ -4,7 +4,7 @@ const { Madlib } = require("../models/madlib.js");
 module.exports = {
 	createMadlib: (req, res) => {
 		const madlib = new Madlib();
-        madlib.title = req.body.title;
+		madlib.title = req.body.title;
 		madlib.madlib = req.body.madlib;
 		madlib.likes = 0;
 		madlib
@@ -68,7 +68,8 @@ module.exports = {
 	},
 	sort: (req, res) => {
 		Madlib.find()
-			.sort({ createdAt: "desc" }).limit(10)
+			.sort({ createdAt: "desc" })
+			.limit(10)
 			.then((data) => res.json(data))
 			.catch((err) => res.json(err));
 	},
