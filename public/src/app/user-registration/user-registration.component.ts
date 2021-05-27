@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActiveUserService } from "../active-user.service";
 import { HttpService } from "../http.service";
 
 @Component({
@@ -17,11 +18,13 @@ export class UserRegistrationComponent implements OnInit {
 	emailErr: any;
 	pwError: any;
 	passwordError: any;
+	activeUser:any
 
 	constructor(
 		private _http: HttpService,
 		private _route: ActivatedRoute,
-		private _router: Router
+		private _router: Router,
+		private _activeUserService: ActiveUserService
 	) {}
 
 	ngOnInit() {
@@ -32,6 +35,10 @@ export class UserRegistrationComponent implements OnInit {
 		this.userNameErr = "";
 		this.emailErr = "";
 		this.pwError = "";
+
+		this._activeUserService.getActiveUser().subscribe(data=>{
+			this.activeUser = data
+		})
 	}
 
 	onRegSubmit() {
@@ -46,15 +53,18 @@ export class UserRegistrationComponent implements OnInit {
 				if (data.errors.user_name)
 					this.userNameErr = data.errors.user_name.message;
 
-				if (data.errors.email) this.emailErr = data.errors.email.message;
+				if (data.errors.email) 
+					this.emailErr = data.errors.email.message;
 
-				if (data.errors.password) this.pwError = data.errors.password.message;
+				if (data.errors.password)
+					 this.pwError = data.errors.password.message;
+
 			} else if (data == false)
 				this.passwordError = "Password does not match confirm password.";
+			
 			else {
-				console.log("user created");
-				localStorage.setItem("user_id", data._id);
-				localStorage.setItem("user_name", data.user_name);
+				console.log("user created")
+				this._activeUserService.setActiveUser(data)
 				this._router.navigate(["/"]);
 			}
 		});

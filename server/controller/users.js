@@ -10,8 +10,7 @@ module.exports = {
 				.then((hashed_password) => {
 					req.body.password = hashed_password;
 					var user = new User(req.body);
-					user
-						.save()
+					user.save()
 						.then((user) => {
 							res.json(user);
 						})
@@ -79,9 +78,9 @@ module.exports = {
 			.then((data) => res.json(data))
 			.catch((err) => res.json(err));
 	},
-	showAllUsers: function (req, res) {
+	showTopUsers: function (req, res) {
 		User.find()
-			.then((user) => res.json(user))
-			.catch((err) => res.json(err));
+			.then((users) => res.json(users))
+			.catch((err) => res.json(err))
 	},
 };
