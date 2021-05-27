@@ -13,6 +13,7 @@ export class MadlibCreateComponent implements OnInit {
 	user: any;
 	words_field = new FormArray([]);
 	object: any;
+	blanks_copy: any;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -26,8 +27,8 @@ export class MadlibCreateComponent implements OnInit {
 	ngOnInit() {
 		this.newMadlib = { madlib: "" };
 		this.madlib = { title: "", blanks: [], value: [] };
-		this.object = localStorage.getItem("user");
-		this.user = JSON.parse(this.object);
+		this.blanks_copy = [...this.madlib.blanks]
+		this.user = {"_id": localStorage.getItem("user_id"), "user_name": localStorage.getItem("user_name")}
 		this.getAMadLib();
 	}
 
@@ -52,6 +53,7 @@ export class MadlibCreateComponent implements OnInit {
 		return new Promise<void>((resolve) => {
 			// Loop through all expected inputs
 			var count = 0;
+			
 			for (let i = 0; i < this.words_field.controls.length; i++) {
 				console.log(this.words_field.value[i]);
 				// Some http validation here for partOfSpeech
@@ -75,7 +77,7 @@ export class MadlibCreateComponent implements OnInit {
 						}
 						// probably add this to logic somewhere
 						// Make this blank field the user inputted word
-						this.madlib.blanks[i] = this.words_field.value[i];
+						this.blanks_copy[i] = this.words_field.value[i];
 
 						// Keep track if we're at the end of the loop
 						if (count == this.words_field.controls.length - 1) {
@@ -94,7 +96,7 @@ export class MadlibCreateComponent implements OnInit {
 			let newStr = "";
 			for (let i = 0; i < this.words_field.controls.length; i++) {
 				newStr += this.madlib.value[i];
-				newStr += this.madlib.blanks[i];
+				newStr += this.blanks_copy[i];
 				// Add last value line if at the end of array
 				if (i == this.words_field.controls.length - 1) {
 					newStr += this.madlib.value[i+1]

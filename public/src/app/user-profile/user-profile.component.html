@@ -1,1 +1,28 @@
-<p>user-profile works!</p>
+	<div class="tile is-parent is-vertical" *ngIf='user'>
+		<div class="tile is-child notification is-primary has-text-dark">
+			<p class="title">{{ user.first_name }} {{ user.last_name }}'s profile</p>
+			<p class="subtitle">
+				Total likes: {{ totalLikes }}
+				<ng-container *ngIf='!totalLikes'> :(
+					<span class="is-italic"> They deserve more love than this!</span>
+				</ng-container>
+			</p>
+			<div class="tile is-child notification is-warning has-text-dark">
+				<div class="content">
+					<p class="title">{{user.user_name}}'s created libs</p>
+					<div *ngIf="user.madlibs?.length == 0">
+						<p class="subtitle">Booo, {{user.user_name}} hasn't created any libs yet (maybe they should push that big green button at the top?)</p>
+					</div>
+					<div *ngIf="user.madlibs?.length >= 1" style="height:400px; overflow:auto">
+						<div class="box has-background-grey has-text-light" *ngFor="let lib of user.madlibs">
+							<p class="subtitle">{{ lib.madlib }}</p>
+							<span class="has-text-weight-semibold">Likes: {{ lib.likes }}</span>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div>	

@@ -13,12 +13,11 @@ export class NavbarComponent implements OnInit {
 	user: any;
 
 	ngOnInit() {
-		this.object = localStorage.getItem("user");
-		this.user = JSON.parse(this.object);
+		this.user = {"_id": localStorage.getItem("user_id"), "user_name": localStorage.getItem("user_name")}
 	}
 
 	logout() {
-		localStorage.removeItem("user");
+		localStorage.clear();
 		this.user = "";
 		this._router.navigateByUrl("/", { skipLocationChange: true });
 	}

@@ -15,17 +15,17 @@
 			<div class="navbar-item">
 				<div class="buttons">
 					<!-- needs ngif session user, show logout/profile/edit links -->
-					<ng-container *ngIf="!user">
+					<ng-container *ngIf="!user._id">
 						<a class="button is-primary is-size-5" [routerLink]="['/register']">
 							<strong>Sign up</strong>
 						</a>
 						<a class="button is-success is-size-5" [routerLink]="['/login']"> Log in</a>
 					</ng-container>
-					<ng-container *ngIf="user">
+					<ng-container *ngIf="user._id">
 						<a class="button is-primary has-text-dark is-size-5" [routerLink]="['/lib/create']"
 							>Create Mad Lib</a
 						>
-						<a class="button is-info is-size-5" [routerLink]="['/user/show']"
+						<a class="button is-info is-size-5" [routerLink]="'/user/' + user._id"
 							>View Profile</a
 						>
 						<a class="button is-danger is-size-5" (click)="logout()">Logout</a>
