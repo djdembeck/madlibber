@@ -80,15 +80,7 @@ module.exports = {
 	},
 	showTopUsers: function (req, res) {
 		User.find()
-			.then((users) => {
-				for (let user in users) {
-					let i = user[i]
-					console.log(i)
-				}
-				i  = data
-				.then(data=>res.json(data))
-				.catch(err=>res.json(data))
-			})
+			.then((users) => res.json(users))
 			.catch((err) => res.json(err))
 	},
 };

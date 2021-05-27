@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ActiveUserService } from "../active-user.service";
 
 @Component({
 	selector: "app-navbar",
@@ -7,22 +8,29 @@ import { Router } from "@angular/router";
 	styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-	user_in_storage = localStorage.getItem("user");
-	log_user = JSON.parse(this.user_in_storage);
+	activeUser:any
 
-	constructor(private _router: Router) {}
-
-	object: any;
-	user: any;
-
-	ngOnInit() {
-		// this.object = localStorage.getItem("user");
-		// this.user = JSON.parse(this.object);
+	constructor(
+		private _router: Router,
+		private _activeUserService: ActiveUserService
+		) {}
+		
+		ngOnInit() {
+		if (localStorage.getItem('activeUser')){
+			// this._activeUserService.setActiveUser(localStorage.getItem('activeUser'))
+			this.activeUser = localStorage.getItem('activeUser')
+			this._activeUserService.setUserFromStorage(localStorage.getItem('activeUser'))
+			console.log(localStorage.getItem('activeUser'))
+		}
+		this._activeUserService.getActiveUser().subscribe(data=>{
+			this.activeUser = data
+			console.log("from navbar:", this.activeUser)
+		})
 	}
 
 	logout() {
 		localStorage.removeItem("user");
-		this.user = "";
-		this._router.navigateByUrl("/", { skipLocationChange: true });
+		this._activeUserService.clearActiveUser(this.activeUser)
+		location.reload()
 	}
 }

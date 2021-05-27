@@ -10,19 +10,20 @@
 		>
 			Madlibber
 		</a>
+		<ng-container *ngIf="activeUser"> {{activeUser.user_name}}</ng-container>
 	</div>
 	<div class="navbar-menu">
 		<div class="navbar-end">
 			<div class="navbar-item">
 				<div class="buttons">
 					<!-- needs ngif session user, show logout/profile/edit links -->
-					<ng-container *ngIf="!log_user">
+					<ng-container *ngIf="activeUser == null">
 						<a class="button is-primary" [routerLink]="['/register']">
 							<strong>Sign up</strong>
 						</a>
 						<a class="button is-success" [routerLink]="['/login']"> Log in</a>
 					</ng-container>
-					<ng-container *ngIf="log_user">
+					<ng-container *ngIf="activeUser">
 						<a class="button is-primary" [routerLink]="['/lib/create']"
 							>Create Mad Lib</a
 						>

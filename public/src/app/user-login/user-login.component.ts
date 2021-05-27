@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpService } from "../http.service";
 import localStorage from "localStorage";
+import { ActiveUserService } from "../active-user.service";
 
 @Component({
 	selector: "app-user-login",
@@ -9,9 +10,8 @@ import localStorage from "localStorage";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	user_in_storage = localStorage.getItem("user");
-	log_user = JSON.parse(this.user_in_storage);
-	
+	activeUser:any
+	user_in_storage:any
 	user: any;
 	errors: any;
 	userError: any;
@@ -19,7 +19,8 @@ export class UserLoginComponent implements OnInit {
 	constructor(
 		private _http: HttpService,
 		private _route: ActivatedRoute,
-		private _router: Router
+		private _router: Router,
+		private _activeUserService: ActiveUserService
 		) {
 			
 	}
@@ -27,18 +28,17 @@ export class UserLoginComponent implements OnInit {
 	ngOnInit() {
 		this.user = {};
 		this.userError = "";
-		this.user_in_storage = {};
-		this.log_user = {};
+		
+		this._activeUserService.getActiveUser().subscribe(data=>{
+			this.activeUser = data
+		})
 	}
 
 	onLoginSubmit() {
 		this._http.userLogin(this.user).subscribe((data: any) => {
-			console.log(data, "***********");
+			console.log(data)
 			if (data._id) {
-				localStorage.setItem("user", JSON.stringify(data));
-				const user_in_storage = localStorage.getItem("user");
-				const log_user = JSON.parse(user_in_storage);
-				// console.log(log_user.user_name)
+				this._activeUserService.setActiveUser(data)
 				this._router.navigate(["/"]);
 			} else {
 				this.userError = data;
