@@ -46,11 +46,15 @@ export class UserRegistrationComponent implements OnInit {
 				if (data.errors.user_name)
 					this.userNameErr = data.errors.user_name.message;
 
-				if (data.errors.email) this.emailErr = data.errors.email.message;
+				if (data.errors.email) 
+					this.emailErr = data.errors.email.message;
 
-				if (data.errors.password) this.pwError = data.errors.password.message;
+				if (data.errors.password)
+					 this.pwError = data.errors.password.message;
+
 			} else if (data == false)
 				this.passwordError = "Password does not match confirm password.";
+			
 			else {
 				console.log("user created");
 				this._router.navigate(["/login"]);

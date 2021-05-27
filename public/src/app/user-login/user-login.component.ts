@@ -9,18 +9,20 @@ import localStorage from "localStorage";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	public user_in_storage = localStorage.getItem("user");
-	public log_user = JSON.parse(this.user_in_storage);
-
+	user_in_storage = localStorage.getItem("user");
+	log_user = JSON.parse(this.user_in_storage);
+	
 	user: any;
 	errors: any;
 	userError: any;
-
+	
 	constructor(
 		private _http: HttpService,
 		private _route: ActivatedRoute,
 		private _router: Router
-	) {}
+		) {
+			
+	}
 
 	ngOnInit() {
 		this.user = {};
@@ -29,7 +31,7 @@ export class UserLoginComponent implements OnInit {
 		this.log_user = {};
 	}
 
-	public onLoginSubmit() {
+	onLoginSubmit() {
 		this._http.userLogin(this.user).subscribe((data: any) => {
 			console.log(data, "***********");
 			if (data._id) {
