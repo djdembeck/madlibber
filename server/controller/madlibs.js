@@ -28,14 +28,7 @@ module.exports = {
 	},
 	showMadlib: (req, res) => {
 		Madlib.findOne({ _id: req.params.id })
-			.then((madlibData) => {
-				User.findOne({ _id: req.params.id })
-					.then((userData) => {
-						console.log("User Data", userData);
-						res.json(userData);
-					})
-					.catch((err) => res.json(err));
-			})
+			.then((madlibData) => res.json(madlibData))
 			.catch((err) => res.json(err));
 	},
 	showAll: (req, res) => {
@@ -47,16 +40,14 @@ module.exports = {
 			})
 			.catch((err) => res.json(err));
 	},
-	update: (req, res) => {
+	createLikes: (req, res) => {
 		// Used to add likes
-		Madlib.update({ _id: req.params.id }, req.body)
+		Madlib.findOne({ _id: req.params.id })
 			.then((data) => {
-				User.findOne({ _id: req.params.id })
-					.then((userData) => {
-						console.log("User Data", userData);
-						res.json(userData);
-					})
-					.catch((err) => res.json(err));
+				data.likes ++
+                data.save()
+                    .then(data => res.json(data))
+                    .catch(err => res.json(err))
 			})
 			.catch((err) => res.json(err));
 	},
@@ -66,10 +57,17 @@ module.exports = {
 			.catch((err) => res.json(err));
 		// do the User have to be updated??
 	},
-	sort: (req, res) => {
+	sortRecent: (req, res) => {
 		Madlib.find()
 			.sort({ createdAt: "desc" }).limit(10)
 			.then((data) => res.json(data))
 			.catch((err) => res.json(err));
 	},
+
+    sortTop5: (req, res) => {
+        Madlib.find()
+            .sort({likes: 'desc'}).limit(5)
+            .then((data) => res.json(data))
+			.catch((err) => res.json(err));
+    }
 };
