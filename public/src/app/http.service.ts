@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../environments/environment";
 
 @Injectable({
 	providedIn: "root",
@@ -7,8 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class HttpService {
 	constructor(private _http: HttpClient) {}
 
-	// You need to enter an API key to use
-	WORD_API_KEY = "";
+	WORD_API_KEY: string = environment.wordsKey;
 
 	createUser(user: any) {
 		return this._http.post("/user/register", user);
@@ -35,7 +35,7 @@ export class HttpService {
 	}
 
 	createMadlib(madlib: any, user: any) {
-		return this._http.post(`/madlibs/${user._id}/add`, { madlib: madlib });
+		return this._http.post(`/madlibs/${user._id}/add`, madlib);
 	}
 
 	showMadlibId(id: any) {
@@ -47,7 +47,7 @@ export class HttpService {
 	}
 
 	addlikes(id: any) {
-		return this._http.put(`/madlibs/${id}/likes`, id);
+		return this._http.post(`/madlibs/${id}/likes`, id);
 	}
 
 	deleteMadlib(madlib) {
@@ -56,7 +56,7 @@ export class HttpService {
 
 	genMadLib() {
 		return this._http.get<any>(
-			`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=10`
+			`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=20`
 		);
 	}
 
@@ -69,5 +69,9 @@ export class HttpService {
 
 	recentMadlibs() {
 		return this._http.get("/madlibs/recent");
+	}
+
+	top5Madlibs() {
+		return this._http.get("/madlibs/top5");
 	}
 }

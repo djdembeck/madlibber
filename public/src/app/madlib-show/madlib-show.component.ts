@@ -9,26 +9,46 @@ import { HttpService } from "../http.service";
 })
 export class MadlibShowComponent implements OnInit {
 	madlib: any;
-	user: any;
+	users: any;
 	liked: boolean;
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _httpService: HttpService
-	) {
-		this.madlib = { madlib: "", likes: 0 };
-		this.user = {};
-	}
+	) {}
 
 	ngOnInit() {
+		this.madlib = {
+			_id: "",
+			madlib: "",
+			likes: "",
+			user: { _id: "", user_name: "" },
+		};
+		this.users = [];
 		this.liked = true;
+		this._httpService.showAllUsers().subscribe((data) => {
+			this.users = data;
+			console.log(this.users);
+		});
 		this.showMadlib();
 	}
 
 	showMadlib() {
 		this._route.params.subscribe((params: Params) => {
 			this._httpService.showMadlibId(params["id"]).subscribe((data) => {
+				console.log(data);
 				this.madlib = data;
+				for (let user of this.users) {
+					// console.log(user,this.madlib)
+					for (let match of user.madlibs) {
+						// console.log(match,this.madlib)
+						if (match._id === this.madlib._id) {
+							console.log("matched", user);
+							this.madlib.user = user;
+							break;
+						}
+					}
+				}
 			});
 		});
 	}
@@ -39,12 +59,5 @@ export class MadlibShowComponent implements OnInit {
 			console.log("Got data from the post back", data);
 		});
 		this.liked = false;
-	}
-	getUser() {
-		this._route.params.subscribe((params: Params) => {
-			this._httpService.showUser(params["id"]).subscribe((data) => {
-				this.user = data;
-			});
-		});
 	}
 }
