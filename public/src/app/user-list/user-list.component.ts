@@ -28,10 +28,10 @@ export class UserListComponent implements OnInit {
 		this._route.params.subscribe((params: Params) => {
 			this._httpService.showUser(params["id"]).subscribe((data) => {
 				this.user = data;
+				for (let i = 0; i < this.user.madlibs.length; i++) {
+					this.totalLikes += this.user.madlibs[i].likes;
+				}
 			});
 		});
-		for (let i = 0; i < this.user.madlibs.length; i++) {
-			this.totalLikes += this.user.madlibs[i].likes;
-		}
 	}
 }

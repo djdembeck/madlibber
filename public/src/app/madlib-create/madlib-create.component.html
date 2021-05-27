@@ -1,28 +1,29 @@
-<div class="card" *ngIf="madlib">
+<div class="card has-background-grey-dark" *ngIf="madlib">
 	<div class="card-header">
 		<div class="card-header-title">
-			<p class="title">Create a Madlib: {{ madlib.title }}</p>
+			<p class="title has-text-warning-light">Create a Madlib: {{ madlib.title }}</p>
 		</div>
 	</div>
 	<form (submit)="onNewMadlib()">
 		<div class="card-content">
 			<div class="content">
-				<span
-					class="is-vcentered has-text-centered"
-					*ngFor="let control of words_field.controls; let i = index"
-				>
-					<ng-container *ngIf="madlib.value[i]">
-						{{ madlib.value[i] }}
-						<input
-							class="input is-inline is-vcentered has-text-centered is-small"
-							size="{{ madlib.blanks[i].length }}"
-							type="text"
-							[formControl]="words_field.controls[i]"
-							placeholder="{{ madlib.blanks[i] }}"
-							required
-						/>
-					</ng-container>
-				</span>
+<div class="columns is-multiline">
+	<div
+	class="column is-one-quarter has-text-centered"
+	*ngFor="let control of words_field.controls; let i = index"
+>
+	<ng-container *ngIf="madlib.value[i]">
+		<p class="subtitle is-size-5 has-text-light">{{ madlib.blanks[i] }}</p>
+		<input
+			class="input has-text-centered has-background-warning-dark has-text-light"
+			size="{{ madlib.blanks[i].length }}"
+			type="text"
+			[formControl]="words_field.controls[i]"
+			required
+		/>
+	</ng-container>
+</div>
+				</div>
 			</div>
 		</div>
 		<div class="card-footer">

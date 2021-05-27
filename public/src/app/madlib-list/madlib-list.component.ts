@@ -27,7 +27,8 @@ export class MadlibListComponent implements OnInit {
 	}
 
 	showMadlibs() {
-		this._httpService.recentMadlibs().subscribe((data) => {
+		// this._httpService.recentMadlibs().subscribe((data) => {
+		this._httpService.displayMadlibs().subscribe((data) => {
 			console.log("Got madlibs", data);
 			this.madlibs = data;
 		});

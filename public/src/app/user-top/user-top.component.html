@@ -1,11 +1,17 @@
-<div class="field">
-	<label class="label has-text-light">Top Libbers</label>
-</div>
+<p class="title">Top Libbers</p>
 <ng-container *ngFor="let user of users">
-	<p>
-		{{ user.user_name }}
-		<a class="button is-primary" [routerLink]="['/user/show']">
-			View Profile
-		</a>
-	</p>
+	<div class="level">
+		<div class="level-left">
+			<div class="level-item">
+				<span>{{ user.user_name }}</span>
+			</div>
+		</div>
+		<div class="level-right">
+			<div class="level-item">
+				<a class="button is-dark is-small" [routerLink]="'/user/' + user._id">
+					View Profile
+				</a>
+			</div>
+		</div>
+	</div>
 </ng-container>

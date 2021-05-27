@@ -35,6 +35,7 @@ export class MadlibCreateComponent implements OnInit {
 	getAMadLib() {
 		this._httpService.genMadLib().subscribe((data) => {
 			this.madlib = data;
+			console.log("Here's the madlib we got from API", data)
 			this.addWord();
 		});
 	}
@@ -75,12 +76,12 @@ export class MadlibCreateComponent implements OnInit {
 						newStr += this.madlib.value[i];
 						newStr += this.madlib.blanks[i];
 						// Keep track if we're at the end of the loop
-						count++;
-						if (count == this.words_field.controls.length) {
+						if (count + 1 == this.words_field.controls.length) {
 							// Add period since we're at the end, let promise know we are done
 							newStr += ".";
 							resolve(newStr);
 						}
+						count++;
 					});
 			}
 		});
@@ -95,6 +96,7 @@ export class MadlibCreateComponent implements OnInit {
 				.createMadlib(this.newMadlib, this.user)
 				.subscribe((data) => {
 					console.log("Got data from post back", data);
+					this._router.navigate(["/"]);
 				});
 		});
 	}

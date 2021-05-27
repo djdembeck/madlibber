@@ -1,10 +1,11 @@
-<div>
-	<h4>10 recent libs</h4>
-	<div *ngFor="let lib of madlibs | slice: 0:9">
-		<p>{{ lib.madlib }}</p>
-		<p>{{ lib.likes }}</p>
-		<ng-container *ngIf="user.mablibs.contains(lib)"
-			><button *ngFor="let user of users"></button
-		></ng-container>
-	</div>
+<p class="title">10 recent libs</p>
+<div *ngIf="madlibs" style="height:400px; overflow:auto">
+	<ng-container *ngFor='let user of madlibs.reverse()'>
+		<div class="box has-background-grey" *ngFor="let lib of user.madlibs">
+			<p class="subtitle has-text-light">{{ lib.madlib }} - <span class="has-text-weight-semibold">Likes: {{ lib.likes }}</span></p>
+			<!-- <ng-container *ngIf="user.mablibs.contains(lib)">
+				<button *ngFor="let user of users"></button>
+			</ng-container> -->
+		</div>
+	</ng-container>
 </div>

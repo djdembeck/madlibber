@@ -5,34 +5,32 @@
 >
 	<div class="navbar-brand">
 		<a
-			class="navbar-item has-text-weight-bold is-size-4 has-text-light"
+			class="navbar-item has-text-weight-bold is-size-2 has-text-warning-light"
 			[routerLink]="['/']"
 		>
 			Madlibber
 		</a>
 	</div>
-	<div class="navbar-menu">
 		<div class="navbar-end">
 			<div class="navbar-item">
 				<div class="buttons">
 					<!-- needs ngif session user, show logout/profile/edit links -->
 					<ng-container *ngIf="!user">
-						<a class="button is-primary" [routerLink]="['/register']">
+						<a class="button is-primary is-size-5" [routerLink]="['/register']">
 							<strong>Sign up</strong>
 						</a>
-						<a class="button is-success" [routerLink]="['/login']"> Log in</a>
+						<a class="button is-success is-size-5" [routerLink]="['/login']"> Log in</a>
 					</ng-container>
 					<ng-container *ngIf="user">
-						<a class="button is-primary" [routerLink]="['/lib/create']"
+						<a class="button is-primary has-text-dark is-size-5" [routerLink]="['/lib/create']"
 							>Create Mad Lib</a
 						>
-						<a class="button is-light" [routerLink]="['/profile']"
+						<a class="button is-info is-size-5" [routerLink]="['/user/show']"
 							>View Profile</a
 						>
-						<a class="button is-danger" (click)="logout()">Logout</a>
+						<a class="button is-danger is-size-5" (click)="logout()">Logout</a>
 					</ng-container>
 				</div>
 			</div>
-		</div>
 	</div>
 </nav>
