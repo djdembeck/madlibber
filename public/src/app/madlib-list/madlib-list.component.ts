@@ -27,10 +27,24 @@ export class MadlibListComponent implements OnInit {
 	}
 
 	showMadlibs() {
-		// this._httpService.recentMadlibs().subscribe((data) => {
-		this._httpService.displayMadlibs().subscribe((data) => {
+		this._httpService.recentMadlibs().subscribe((data) => {
 			console.log("Got madlibs", data);
 			this.madlibs = data;
+			for(let lib of this.madlibs){
+				for(let user of this.users){
+					//console.log(user,lib)
+					for(let match of user.madlibs){
+						//console.log(match,lib)
+						if(match._id === lib._id){
+							//console.log('matched')
+							lib.user = user
+							break
+						}
+					}
+					
+				}
+			}
+			console.log(this.madlibs)
 		});
 	}
 }
