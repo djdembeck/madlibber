@@ -3,11 +3,11 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { HttpService } from "../http.service";
 
 @Component({
-	selector: "app-user-list",
-	templateUrl: "./user-list.component.html",
-	styleUrls: ["./user-list.component.css"],
+	selector: "app-user-profile",
+	templateUrl: "./user-profile.component.html",
+	styleUrls: ["./user-profile.component.css"],
 })
-export class UserListComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
 	user: any;
 	totalLikes: number;
 
