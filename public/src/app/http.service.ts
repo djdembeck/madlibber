@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import {environment} from "../environments/environment";
+import { environment } from "../environments/environment";
 
 @Injectable({
 	providedIn: "root",
@@ -8,7 +8,7 @@ import {environment} from "../environments/environment";
 export class HttpService {
 	constructor(private _http: HttpClient) {}
 
-	WORD_API_KEY: string = environment.wordsKey
+	WORD_API_KEY: string = environment.wordsKey;
 
 	createUser(user: any) {
 		return this._http.post("/user/register", user);

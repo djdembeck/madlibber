@@ -9,7 +9,6 @@ import localStorage from "localStorage";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-
 	user: any;
 	errors: any;
 	userError: any;

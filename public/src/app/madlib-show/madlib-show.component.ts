@@ -57,5 +57,4 @@ export class MadlibShowComponent implements OnInit {
 		});
 		this.liked = false;
 	}
-	
 }

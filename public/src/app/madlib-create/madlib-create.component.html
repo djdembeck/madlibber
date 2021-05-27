@@ -1,34 +1,50 @@
 <div class="card has-background-grey-dark" *ngIf="madlib">
 	<div class="card-header">
 		<div class="card-header-title">
-			<p class="title has-text-warning-light">Create a Madlib: {{ madlib.title }}</p>
+			<p class="title has-text-warning-light">
+				Create a Madlib: {{ madlib.title }}
+			</p>
 		</div>
 	</div>
 	<form (submit)="onNewMadlib()">
 		<div class="card-content">
 			<div class="content">
-<div class="columns is-multiline">
-	<div
-	class="column is-one-quarter has-text-centered"
-	*ngFor="let control of words_field.controls; let i = index"
->
-	<ng-container *ngIf="madlib.value[i]">
-		<p class="subtitle is-size-5 has-text-light">{{ madlib.blanks[i] }}</p>
-		<input
-			class="input has-text-centered has-background-warning-dark has-text-light"
-			size="{{ madlib.blanks[i].length }}"
-			type="text"
-			[formControl]="words_field.controls[i]"
-			required
-		/>
-	</ng-container>
-</div>
+				<div class="columns is-multiline">
+					<div
+						class="column is-one-quarter has-text-centered"
+						*ngFor="let control of words_field.controls; let i = index"
+					>
+						<ng-container *ngIf="madlib.value[i]">
+							<p class="subtitle is-size-5 has-text-light">
+								{{ madlib.blanks[i] }}
+							</p>
+							<input
+								class="
+									input
+									has-text-centered has-background-warning-dark has-text-light
+								"
+								size="{{ madlib.blanks[i].length }}"
+								type="text"
+								name="{{control}}"
+								[formControl]="words_field.controls[i]"
+							>
+						</ng-container>
+						<p class="has-text-white">{{control.invalid}}</p>
+						<div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert alert-danger">
+							<div *ngIf="control.errors?.required">
+								Name is required.
+							</div>
+							<div *ngIf="control.errors?.minlength">
+								Name must be at least 4 characters long.
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="card-footer">
 			<div class="card-footer-item">
-				<button class="button is-success" type="submit">Create Mad Lib</button>
+				<button class="button is-success" [disabled]="words_field.invalid" type="submit">Create Mad Lib</button>
 			</div>
 		</div>
 	</form>

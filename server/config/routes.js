@@ -31,7 +31,7 @@ module.exports = function (app) {
 	app.post("/madlibs/:id/add", (req, res) => {
 		Madlib.createMadlib(req, res);
 	});
-	
+
 	app.get("/madlibs", (req, res) => {
 		Madlib.showAll(req, res);
 	});
@@ -39,7 +39,7 @@ module.exports = function (app) {
 	app.post("/madlibs/:id/likes", (req, res) => {
 		Madlib.createLikes(req, res);
 	});
-	
+
 	app.delete("/madlibs/:id/remove", (req, res) => {
 		Madlib.destroy(req, res);
 	});
@@ -55,7 +55,7 @@ module.exports = function (app) {
 	app.get("/madlibs/:id", (req, res) => {
 		Madlib.showMadlib(req, res);
 	});
-	
+
 	app.get("/users", (req, res) => {
 		User.showAllUsers(req, res);
 	});
