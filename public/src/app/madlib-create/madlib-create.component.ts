@@ -48,10 +48,10 @@ export class MadlibCreateComponent implements OnInit {
 	}
 
 	// Try to match each word user inputs to the correct type of word the generator expects
-	validateWords(newStr = "") {
-		return new Promise((resolve) => {
+	validateWords() {
+		return new Promise<void>((resolve) => {
 			// Loop through all expected inputs
-			let count = 0;
+			var count = 0;
 			for (let i = 0; i < this.words_field.controls.length; i++) {
 				console.log(this.words_field.value[i]);
 				// Some http validation here for partOfSpeech
@@ -61,25 +61,26 @@ export class MadlibCreateComponent implements OnInit {
 					.subscribe((data) => {
 						console.log(data);
 						// If word partOfSpeech (eg noun) matches expected partOfSpeech from generator
-						if (data.results[1].partOfSpeech == this.madlib.blanks[i]) {
-							console.log(
-								`Word type: ${data.results[1].partOfSpeech}, matches: ${this.madlib.blanks[i]}`
-							);
-							// Else be lenient and trust the user
+						if (data.results && data.results[0].partOfSpeech) {
+							if (data.results[0].partOfSpeech == this.madlib.blanks[i]) {
+								console.log(
+									`Word type: ${data.results[0].partOfSpeech}, matches: ${this.madlib.blanks[i]}`
+								);
+								// Else be lenient and trust the user
+							} else {
+								console.log("Word types dont match", data);
+							}
 						} else {
-							console.log("Word types dont match", data);
+							console.log("No part of speech data from API")
 						}
 						// probably add this to logic somewhere
 						// Make this blank field the user inputted word
 						this.madlib.blanks[i] = this.words_field.value[i];
 
-						newStr += this.madlib.value[i];
-						newStr += this.madlib.blanks[i];
 						// Keep track if we're at the end of the loop
-						if (count + 1 == this.words_field.controls.length) {
-							// Add period since we're at the end, let promise know we are done
-							newStr += ".";
-							resolve(newStr);
+						if (count == this.words_field.controls.length - 1) {
+							// Let promise know we are done
+							resolve();
 						}
 						count++;
 					});
@@ -90,8 +91,17 @@ export class MadlibCreateComponent implements OnInit {
 	onNewMadlib() {
 		// Call validate words and wait for it to finish
 		this.validateWords().then((value) => {
-			this.newMadlib = value;
-			console.log("component", this.newMadlib);
+			let newStr = "";
+			for (let i = 0; i < this.words_field.controls.length; i++) {
+				newStr += this.madlib.value[i];
+				newStr += this.madlib.blanks[i];
+				// Add last value line if at the end of array
+				if (i == this.words_field.controls.length - 1) {
+					newStr += this.madlib.value[i+1]
+				}
+			}
+			this.newMadlib = newStr;
+			console.log("newstring", this.newMadlib);
 			this._httpService
 				.createMadlib(this.newMadlib, this.user)
 				.subscribe((data) => {
