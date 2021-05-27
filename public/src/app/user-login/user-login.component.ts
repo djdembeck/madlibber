@@ -9,8 +9,6 @@ import localStorage from "localStorage";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	public user_in_storage = localStorage.getItem("user");
-	public log_user = JSON.parse(this.user_in_storage);
 
 	user: any;
 	errors: any;
@@ -25,18 +23,15 @@ export class UserLoginComponent implements OnInit {
 	ngOnInit() {
 		this.user = {};
 		this.userError = "";
-		this.user_in_storage = {};
-		this.log_user = {};
 	}
 
 	public onLoginSubmit() {
 		this._http.userLogin(this.user).subscribe((data: any) => {
 			console.log(data, "***********");
 			if (data._id) {
-				localStorage.setItem("user", JSON.stringify(data));
-				const user_in_storage = localStorage.getItem("user");
-				const log_user = JSON.parse(user_in_storage);
-				// console.log(log_user.user_name)
+				// Set user id and name in session
+				localStorage.setItem("user_id", data._id);
+				localStorage.setItem("user_name", data.user_name);
 				this._router.navigate(["/"]);
 			} else {
 				this.userError = data;

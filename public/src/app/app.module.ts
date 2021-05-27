@@ -7,7 +7,6 @@ import { AppComponent } from "./app.component";
 
 import { UserLoginComponent } from "./user-login/user-login.component";
 import { UserRegistrationComponent } from "./user-registration/user-registration.component";
-import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { UserEditComponent } from "./user-edit/user-edit.component";
 import { UserListComponent } from "./user-list/user-list.component";
 import { UserTopComponent } from "./user-top/user-top.component";
@@ -27,7 +26,6 @@ import { MadlibShowComponent } from "./madlib-show/madlib-show.component";
 		AppComponent,
 		UserLoginComponent,
 		UserRegistrationComponent,
-		UserProfileComponent,
 		UserEditComponent,
 		UserListComponent,
 		UserTopComponent,

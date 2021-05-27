@@ -53,7 +53,9 @@ export class UserRegistrationComponent implements OnInit {
 				this.passwordError = "Password does not match confirm password.";
 			else {
 				console.log("user created");
-				this._router.navigate(["/login"]);
+				localStorage.setItem("user_id", data._id);
+				localStorage.setItem("user_name", data.user_name);
+				this._router.navigate(["/"]);
 			}
 		});
 	}
