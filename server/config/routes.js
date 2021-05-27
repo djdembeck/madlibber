@@ -35,7 +35,7 @@ module.exports = function (app) {
 	app.get("/madlibs", (req, res) => {
 		Madlib.showAll(req, res);
 	});
-	
+
 	app.post("/madlibs/:id/likes", (req, res) => {
 		Madlib.createLikes(req, res);
 	});
@@ -45,9 +45,9 @@ module.exports = function (app) {
 	});
 
 	app.get("/madlibs/top5", (req, res) => {
-		Madlib.sortTop5(req, res)
+		Madlib.sortTop5(req, res);
 	});
-	
+
 	app.get("/madlibs/recent", (req, res) => {
 		Madlib.sortRecent(req, res);
 	});

@@ -15,10 +15,7 @@ export class MadlibCreateComponent implements OnInit {
 	object: any;
 	blanks_copy: any;
 
-	constructor(
-		private _router: Router,
-		private _httpService: HttpService
-	) {
+	constructor(private _router: Router, private _httpService: HttpService) {
 		this.user = {};
 	}
 	madlib = { title: "", blanks: [], value: [] };
@@ -46,10 +43,9 @@ export class MadlibCreateComponent implements OnInit {
 	// Create inputs for each blank of madlib
 	addWord() {
 		for (let i = 0; i < this.madlib.blanks.length; i++) {
-			this.words_field.push(new FormControl("",  [
-				Validators.required,
-				Validators.minLength(3)
-			]));
+			this.words_field.push(
+				new FormControl("", [Validators.required, Validators.minLength(3)])
+			);
 		}
 	}
 

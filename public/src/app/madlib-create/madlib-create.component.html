@@ -25,15 +25,16 @@
 								"
 								size="{{ madlib.blanks[i].length }}"
 								type="text"
-								name="{{control}}"
+								name="{{ control }}"
 								[formControl]="words_field.controls[i]"
-							>
+							/>
 						</ng-container>
-						<p class="has-text-white">{{control.invalid}}</p>
-						<div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert alert-danger">
-							<div *ngIf="control.errors?.required">
-								Name is required.
-							</div>
+						<p class="has-text-white">{{ control.invalid }}</p>
+						<div
+							*ngIf="control.invalid && (control.dirty || control.touched)"
+							class="alert alert-danger"
+						>
+							<div *ngIf="control.errors?.required">Name is required.</div>
 							<div *ngIf="control.errors?.minlength">
 								Name must be at least 4 characters long.
 							</div>
@@ -44,7 +45,13 @@
 		</div>
 		<div class="card-footer">
 			<div class="card-footer-item">
-				<button class="button is-success" [disabled]="words_field.invalid" type="submit">Create Mad Lib</button>
+				<button
+					class="button is-success"
+					[disabled]="words_field.invalid"
+					type="submit"
+				>
+					Create Mad Lib
+				</button>
 			</div>
 		</div>
 	</form>

@@ -1,7 +1,12 @@
 <p class="title">madlib-top works!</p>
-<div *ngIf="madlibs" style="height:400px; overflow:auto">
-	<div class="box has-background-grey has-text-light" *ngFor="let lib of madlibs">
-		<p class="subtitle"><a [routerLink]="'/lib/'+lib._id">{{ lib.title }}</a></p>
+<div *ngIf="madlibs" style="height: 400px; overflow: auto">
+	<div
+		class="box has-background-grey has-text-light"
+		*ngFor="let lib of madlibs"
+	>
+		<p class="subtitle">
+			<a [routerLink]="'/lib/' + lib._id">{{ lib.title }}</a>
+		</p>
 		<div class="level">
 			<div class="level-left">
 				<div class="level-item">
@@ -10,7 +15,10 @@
 			</div>
 			<div class="level-right">
 				<div class="level-item">
-					<a class="button is-dark is-small" [routerLink]="'/user/'+lib.user._id">
+					<a
+						class="button is-dark is-small"
+						[routerLink]="'/user/' + lib.user._id"
+					>
 						by {{ lib.user.user_name }}
 					</a>
 				</div>

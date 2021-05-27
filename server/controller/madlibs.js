@@ -44,10 +44,11 @@ module.exports = {
 		// Used to add likes
 		Madlib.findOne({ _id: req.params.id })
 			.then((data) => {
-				data.likes ++
-                data.save()
-                    .then(data => res.json(data))
-                    .catch(err => res.json(err))
+				data.likes++;
+				data
+					.save()
+					.then((data) => res.json(data))
+					.catch((err) => res.json(err));
 			})
 			.catch((err) => res.json(err));
 	},
@@ -65,10 +66,11 @@ module.exports = {
 			.catch((err) => res.json(err));
 	},
 
-    sortTop5: (req, res) => {
-        Madlib.find()
-            .sort({likes: 'desc'}).limit(5)
-            .then((data) => res.json(data))
+	sortTop5: (req, res) => {
+		Madlib.find()
+			.sort({ likes: "desc" })
+			.limit(5)
+			.then((data) => res.json(data))
 			.catch((err) => res.json(err));
-    }
+	},
 };
