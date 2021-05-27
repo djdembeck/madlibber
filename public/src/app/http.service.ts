@@ -35,7 +35,7 @@ export class HttpService {
 	}
 
 	createMadlib(madlib: any, user: any) {
-		return this._http.post(`/madlibs/${user._id}/add`, { madlib: madlib });
+		return this._http.post(`/madlibs/${user._id}/add`, madlib);
 	}
 
 	showMadlibId(id: any) {

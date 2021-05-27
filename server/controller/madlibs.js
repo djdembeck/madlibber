@@ -4,7 +4,7 @@ const { Madlib } = require("../models/madlib.js");
 module.exports = {
 	createMadlib: (req, res) => {
 		const madlib = new Madlib();
-        madlib.title = "";
+        madlib.title = req.body.title;
 		madlib.madlib = req.body.madlib;
 		madlib.likes = 0;
 		madlib

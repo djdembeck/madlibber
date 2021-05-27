@@ -25,7 +25,7 @@ export class MadlibCreateComponent implements OnInit {
 	madlib = { title: "", blanks: [], value: [] };
 
 	ngOnInit() {
-		this.newMadlib = { madlib: "" };
+		this.newMadlib = { title: "", madlib: "" };
 		this.madlib = { title: "", blanks: [], value: [] };
 		this.blanks_copy = [...this.madlib.blanks]
 		this.user = {"_id": localStorage.getItem("user_id"), "user_name": localStorage.getItem("user_name")}
@@ -102,7 +102,7 @@ export class MadlibCreateComponent implements OnInit {
 					newStr += this.madlib.value[i+1]
 				}
 			}
-			this.newMadlib = newStr;
+			this.newMadlib = {title: this.madlib.title, madlib: newStr};
 			console.log("newstring", this.newMadlib);
 			this._httpService
 				.createMadlib(this.newMadlib, this.user)
