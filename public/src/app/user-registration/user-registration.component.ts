@@ -10,7 +10,7 @@ import { HttpService } from "../http.service";
 })
 export class UserRegistrationComponent implements OnInit {
 	@Input() settings;
-	user: any;
+	user: {};
 	errors: any;
 	firstNameErr: any;
 	lastNameErr: any;
@@ -28,7 +28,7 @@ export class UserRegistrationComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.user = {};
+		this.user = {}
 		this.passwordError = "";
 		this.firstNameErr = "";
 		this.lastNameErr = "";
@@ -37,7 +37,8 @@ export class UserRegistrationComponent implements OnInit {
 		this.pwError = "";
 
 		this._activeUserService.getActiveUser().subscribe(data=>{
-			this.activeUser = data
+		this.activeUser = data
+		this.user = data
 		})
 	}
 
