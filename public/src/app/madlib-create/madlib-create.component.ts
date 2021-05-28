@@ -8,6 +8,7 @@ import {
 	ValidatorFn,
 	Validators,
 } from "@angular/forms";
+import { ActiveUserService } from "../active-user.service";
 
 @Component({
 	selector: "app-madlib-create",
@@ -21,7 +22,11 @@ export class MadlibCreateComponent implements OnInit {
 	object: any;
 	blanks_copy: any;
 
-	constructor(private _router: Router, private _httpService: HttpService) {
+	constructor(
+		private _router: Router,
+		private _httpService: HttpService,
+		private _activeUserService: ActiveUserService
+		) {
 		this.user = {};
 	}
 	madlib = { title: "", blanks: [], value: [] };
@@ -30,10 +35,9 @@ export class MadlibCreateComponent implements OnInit {
 		this.newMadlib = { title: "", madlib: "" };
 		this.madlib = { title: "", blanks: [], value: [] };
 		this.blanks_copy = [...this.madlib.blanks];
-		this.user = {
-			_id: localStorage.getItem("user_id"),
-			user_name: localStorage.getItem("user_name"),
-		};
+		this._activeUserService.getActiveUser().subscribe((data) => {
+			this.user = data;
+		});
 		this.getAMadLib();
 	}
 

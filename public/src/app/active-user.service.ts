@@ -11,12 +11,12 @@ export class ActiveUserService {
 		return this.activeUser;
 	}
 	setActiveUser(activeUser) {
-		console.log("from form:", activeUser);
+		// console.log("from form:", activeUser);
 		this.addUserToLocal(activeUser);
 		return this.activeUser.next(activeUser);
 	}
 	setUserFromStorage(activeUser) {
-		console.log("from storage:", activeUser);
+		// console.log("from storage:", activeUser);
 		return this.activeUser.next(activeUser);
 	}
 	clearActiveUser(data) {

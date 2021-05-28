@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { HttpService } from "../http.service";
+import { ActiveUserService } from "../active-user.service";
 
 @Component({
 	selector: "app-madlib-show",
@@ -11,10 +12,13 @@ export class MadlibShowComponent implements OnInit {
 	madlib: any;
 	users: any;
 	liked: boolean;
+	activeUser: any
+
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
-		private _httpService: HttpService
+		private _httpService: HttpService,
+		private _activeUserService: ActiveUserService
 	) {}
 
 	ngOnInit() {
@@ -31,6 +35,9 @@ export class MadlibShowComponent implements OnInit {
 			console.log(this.users);
 		});
 		this.showMadlib();
+		this._activeUserService.getActiveUser().subscribe((data) => {
+			this.activeUser = data;
+		});
 	}
 
 	showMadlib() {

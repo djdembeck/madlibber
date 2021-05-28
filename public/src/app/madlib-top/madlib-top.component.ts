@@ -32,11 +32,11 @@ export class MadlibTopComponent implements OnInit {
 			this.madlibs = data;
 			for (let lib of this.madlibs) {
 				for (let user of this.users) {
-					//console.log(user,lib)
+					// console.log(user,lib)
 					for (let match of user.madlibs) {
-						//console.log(match,lib)
+						// console.log(match,lib)
 						if (match._id === lib._id) {
-							//console.log('matched')
+							// console.log('matched')
 							lib.user = user;
 							break;
 						}
