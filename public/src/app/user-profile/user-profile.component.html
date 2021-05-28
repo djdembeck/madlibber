@@ -19,7 +19,9 @@
 						*ngFor="let lib of user.madlibs"
 					>
 						<!-- lib.title (make it this a link)  -->
-						<p class="title"><a [routerLink]="['/lib/', lib._id]">{{lib.title}}</a></p>
+						<p class="title">
+							<a [routerLink]="['/lib/', lib._id]">{{ lib.title }}</a>
+						</p>
 						<p class="subtitle">{{ lib.madlib }}</p>
 					</div>
 				</div>

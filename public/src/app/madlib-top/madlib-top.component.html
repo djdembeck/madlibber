@@ -7,7 +7,11 @@
 		<p class="title">
 			<a [routerLink]="'/lib/' + lib._id">{{ lib.title }}</a>
 		</p>
-		<p>{{ (lib.madlib.length>6)? (lib.madlib | slice:0:90)+'...':(lib.madlib) }}</p>
+		<p>
+			{{
+				lib.madlib.length > 6 ? (lib.madlib | slice: 0:90) + "..." : lib.madlib
+			}}
+		</p>
 		<div class="level">
 			<div class="level-left">
 				<div class="level-item">
