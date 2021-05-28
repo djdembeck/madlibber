@@ -10,13 +10,15 @@
 		</div>
 		<div class="level">
 			<div class="level-item">
-				<button
+				<ng-container *ngIf='activeUser'>
+					<button
 					class="button is-link is-size-5"
 					(click)="onLikeSubmit()"
 					*ngIf="liked"
 				>
 					Like
 				</button>
+				</ng-container>
 			</div>
 			<span class="has-text-weight-semibold is-size-5"
 				>Likes: {{ madlib.likes }}</span
