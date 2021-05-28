@@ -6,14 +6,21 @@
 				<p class="subtitle">
 					{{ madlib.madlib }}
 				</p>
-
 			</div>
 		</div>
 		<div class="level">
-				<div class="level-item">
-					<button class="button is-link is-size-5" (click)="onLikeSubmit()"  *ngIf="liked">Like</button>
+			<div class="level-item">
+				<button
+					class="button is-link is-size-5"
+					(click)="onLikeSubmit()"
+					*ngIf="liked"
+				>
+					Like
+				</button>
 			</div>
-				<span class="has-text-weight-semibold is-size-5">Likes: {{ madlib.likes }}</span>
+			<span class="has-text-weight-semibold is-size-5"
+				>Likes: {{ madlib.likes }}</span
+			>
 		</div>
 	</div>
 </div>
