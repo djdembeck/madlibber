@@ -20,6 +20,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpService } from "./http.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MadlibShowComponent } from "./madlib-show/madlib-show.component";
+import { ActiveUserService } from "./active-user.service";
 
 @NgModule({
 	declarations: [
@@ -43,7 +44,7 @@ import { MadlibShowComponent } from "./madlib-show/madlib-show.component";
 		FormsModule,
 		ReactiveFormsModule,
 	],
-	providers: [HttpService],
+	providers: [HttpService,ActiveUserService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

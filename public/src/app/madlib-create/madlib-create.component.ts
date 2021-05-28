@@ -15,10 +15,7 @@ export class MadlibCreateComponent implements OnInit {
 	object: any;
 	blanks_copy: any;
 
-	constructor(
-		private _router: Router,
-		private _httpService: HttpService
-	) {
+	constructor(private _router: Router, private _httpService: HttpService) {
 		this.user = {};
 	}
 	madlib = { title: "", blanks: [], value: [] };

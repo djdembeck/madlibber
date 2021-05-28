@@ -15,17 +15,20 @@ export class MadlibShowComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _httpService: HttpService
-	) {
-		
-	}
+	) {}
 
 	ngOnInit() {
-    this.madlib = {_id:'', madlib:'', likes:'', user: {_id: '', user_name: ''}};
+		this.madlib = {
+			_id: "",
+			madlib: "",
+			likes: "",
+			user: { _id: "", user_name: "" },
+		};
 		this.users = [];
-    this.liked = true;
+		this.liked = true;
 		this._httpService.showAllUsers().subscribe((data) => {
-				this.users = data;
-        console.log(this.users)
+			this.users = data;
+			console.log(this.users);
 		});
 		this.showMadlib();
 	}
@@ -33,19 +36,19 @@ export class MadlibShowComponent implements OnInit {
 	showMadlib() {
 		this._route.params.subscribe((params: Params) => {
 			this._httpService.showMadlibId(params["id"]).subscribe((data) => {
-				console.log(data)
-        this.madlib = data;
-        for(let user of this.users){
-          // console.log(user,this.madlib)
-          for(let match of user.madlibs){
-            // console.log(match,this.madlib)
-            if(match._id === this.madlib._id){
-              console.log('matched', user)
-              this.madlib.user = user
-              break
-              }
-            }
-        }
+				console.log(data);
+				this.madlib = data;
+				for (let user of this.users) {
+					// console.log(user,this.madlib)
+					for (let match of user.madlibs) {
+						// console.log(match,this.madlib)
+						if (match._id === this.madlib._id) {
+							console.log("matched", user);
+							this.madlib.user = user;
+							break;
+						}
+					}
+				}
 			});
 		});
 	}

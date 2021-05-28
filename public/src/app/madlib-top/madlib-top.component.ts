@@ -21,30 +21,29 @@ export class MadlibTopComponent implements OnInit {
 
 	ngOnInit() {
 		this._httpService.showAllUsers().subscribe((data) => {
-			this.users = data
-			this.showMadlibs()
-		})
+			this.users = data;
+			this.showMadlibs();
+		});
 	}
 
 	showMadlibs() {
 		this._httpService.top5Madlibs().subscribe((data) => {
 			console.log("Got madlibs", data);
 			this.madlibs = data;
-			for(let lib of this.madlibs){
-				for(let user of this.users){
+			for (let lib of this.madlibs) {
+				for (let user of this.users) {
 					//console.log(user,lib)
-					for(let match of user.madlibs){
+					for (let match of user.madlibs) {
 						//console.log(match,lib)
-						if(match._id === lib._id){
+						if (match._id === lib._id) {
 							//console.log('matched')
-							lib.user = user
-							break
+							lib.user = user;
+							break;
 						}
 					}
-					
 				}
 			}
-			console.log(this.madlibs)
+			console.log(this.madlibs);
 		});
 	}
 }

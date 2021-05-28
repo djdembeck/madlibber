@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActiveUserService } from "../active-user.service";
 import { HttpService } from "../http.service";
 
 @Component({
@@ -18,11 +19,13 @@ export class UserEditComponent implements OnInit {
 	emailErr: any;
 	pwError: any;
 	passwordError: any;
+	activeUser:any
 
 	constructor(
 		private _http: HttpService,
 		private _route: ActivatedRoute,
-		private _router: Router
+		private _router: Router,
+		private _activeUserService: ActiveUserService
 	) {}
 
 	ngOnInit() {
@@ -34,6 +37,11 @@ export class UserEditComponent implements OnInit {
 		this.userNameErr = "";
 		this.emailErr = "";
 		this.pwError = "";
+
+		this._activeUserService.getActiveUser().subscribe(data=>{
+			this.activeUser = data
+			this.user = data
+			})
 	}
 
 	onEditSubmit() {
@@ -61,6 +69,7 @@ export class UserEditComponent implements OnInit {
 
 	deleteUser(user) {
 		this._http.deleteUser(user).subscribe((data) => {
+			this._activeUserService.clearActiveUser(this.activeUser)
 			this._router.navigate(["/"]);
 		});
 	}

@@ -15,7 +15,7 @@ const routes: Routes = [
 	{ path: "", component: DashboardComponent },
 	{ path: "register", component: UserRegistrationComponent },
 	{ path: "login", component: UserLoginComponent },
-	{ path: "user/edit", component: UserEditComponent },
+	{ path: "user/edit/:id", component: UserEditComponent },
 	{ path: "lib/create", component: MadlibCreateComponent },
 	{ path: "user/:id", component: UserProfileComponent },
 	{ path: "lib/:id", component: MadlibShowComponent },

@@ -71,7 +71,7 @@ export class HttpService {
 		return this._http.get("/madlibs/recent");
 	}
 
-	top5Madlibs(){
+	top5Madlibs() {
 		return this._http.get("/madlibs/top5");
 	}
 }
