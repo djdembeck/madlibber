@@ -55,8 +55,4 @@ module.exports = function (app) {
 	app.get("/madlibs/:id", (req, res) => {
 		Madlib.showMadlib(req, res);
 	});
-
-	app.get("/users", (req, res) => {
-		User.showAllUsers(req, res);
-	});
 };

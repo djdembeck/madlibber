@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActiveUserService } from "../active-user.service";
 import { HttpService } from "../http.service";
 
 @Component({
@@ -9,12 +10,14 @@ import { HttpService } from "../http.service";
 })
 export class UserProfileComponent implements OnInit {
 	user: any;
+	activeUser:any
 	totalLikes: number;
 
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
-		private _httpService: HttpService
+		private _httpService: HttpService,
+		private _activeUserService: ActiveUserService
 	) {
 		this.user = [];
 		this.totalLikes = 0;
@@ -22,6 +25,11 @@ export class UserProfileComponent implements OnInit {
 
 	ngOnInit() {
 		this.displayMadlib();
+
+		this._activeUserService.getActiveUser().subscribe(data=>{
+			this.activeUser = data
+		})
+		
 	}
 
 	displayMadlib() {
