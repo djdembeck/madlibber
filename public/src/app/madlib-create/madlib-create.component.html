@@ -15,29 +15,41 @@
 						*ngFor="let control of words_field.controls; let i = index"
 					>
 						<ng-container *ngIf="madlib.value[i]">
-							<p class="subtitle is-size-5 has-text-light">
-								{{ madlib.blanks[i] }}
-							</p>
-							<input
-								class="
-									input
-									has-text-centered has-background-warning-dark has-text-light
-								"
-								size="{{ madlib.blanks[i].length }}"
-								type="text"
-								name="{{control}}"
-								[formControl]="words_field.controls[i]"
-							>
+							<div class="field">
+								<p class="subtitle is-size-5 has-text-light">
+									{{ madlib.blanks[i] }}
+								</p>
+								<input
+									class="
+										input
+										has-text-centered has-background-warning-dark has-text-light
+									"
+									[ngClass]="control.invalid && (control.dirty || control.touched) ? 'is-danger' : 'is-light'"
+									[ngClass]="control.valid ?  '' : 'is-danger'"
+									size="{{ madlib.blanks[i].length }}"
+									type="text"
+									[formControl]="words_field.controls[i]"
+								>
+								<!-- Field validation errors -->
+								<p *ngIf="control.invalid && (control.dirty || control.touched)" class="help is-danger is-size-6">
+									<span *ngIf="control.errors?.required">
+										Word is required.
+									</span>
+									<span *ngIf="control.errors?.minlength">
+										Word must be at least 3 characters long.
+									</span>
+									<span *ngIf="control.errors?.noWordFound">
+										Wrong type of word ({{control.errors.noWordFound}})
+									</span>
+									<span *ngIf="control.errors?.notEnoughDataFromAPI">
+										No API data for this word.
+									</span>
+									<span *ngIf="control.errors?.wordNotValid">
+										Invalid word.
+									</span>
+								</p>
+							</div>
 						</ng-container>
-						<p class="has-text-white">{{control.invalid}}</p>
-						<div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert alert-danger">
-							<div *ngIf="control.errors?.required">
-								Name is required.
-							</div>
-							<div *ngIf="control.errors?.minlength">
-								Name must be at least 4 characters long.
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

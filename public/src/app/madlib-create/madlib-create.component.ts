@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { HttpService } from "../http.service";
-import { FormArray, FormControl, Validators } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, ValidatorFn, Validators } from "@angular/forms";
 
 @Component({
 	selector: "app-madlib-create",
@@ -46,58 +46,80 @@ export class MadlibCreateComponent implements OnInit {
 	// Create inputs for each blank of madlib
 	addWord() {
 		for (let i = 0; i < this.madlib.blanks.length; i++) {
-			this.words_field.push(new FormControl("",  [
-				Validators.required,
-				Validators.minLength(3)
-			]));
+			this.words_field.push(new FormControl("",  {
+				validators: [
+					Validators.required,
+					Validators.minLength(3),
+					this.validateWords(i),
+				],
+				// Start validating when user isn't typing in this field
+				updateOn: 'blur',
+			}));
 		}
 	}
 
 	// Try to match each word user inputs to the correct type of word the generator expects
-	validateWords() {
-		return new Promise<void>((resolve) => {
-			// Loop through all expected inputs
-			var count = 0;
-
-			for (let i = 0; i < this.words_field.controls.length; i++) {
-				console.log(this.words_field.value[i]);
-				// Some http validation here for partOfSpeech
-				// Call Words API to maybe validate known types
-				this._httpService
-					.validateWord(this.words_field.value[i])
+	validateWords(i:number): ValidatorFn {
+		return (control: AbstractControl): {[key: string]: any} | null => {
+				// Only attempt to validate types we know Words API supports
+				var known_words = ['adjective', 'noun', 'verb']
+				let count = 0
+				let wordIsKnown = false
+				while (count < known_words.length) {
+					if (this.madlib.blanks[i] == known_words[count]) {
+						wordIsKnown = true
+						break
+					}
+					count ++
+				}
+				// If field has known type and has a value
+				if (wordIsKnown && control.value) {
+					return this._httpService
+					.validateWord(control.value)
 					.subscribe((data) => {
 						console.log(data);
-						// If word partOfSpeech (eg noun) matches expected partOfSpeech from generator
+						// If valid results AND top result has partOfSpeech key
 						if (data.results && data.results[0].partOfSpeech) {
-							if (data.results[0].partOfSpeech == this.madlib.blanks[i]) {
-								console.log(
-									`Word type: ${data.results[0].partOfSpeech}, matches: ${this.madlib.blanks[i]}`
-								);
-								// Else be lenient and trust the user
-							} else {
-								console.log("Word types dont match", data);
+							let count = 0
+							console.log("Looking for first matching occurence")
+							// Run through results array until we run out of results or validate
+							while (count < data.results.length) {
+								if (data.results[count].partOfSpeech == this.madlib.blanks[i]) {
+									console.log(`Word type for ${data.word} result ${count} matches`, data.results[count]);
+									this.blanks_copy[i] = control.value;
+									control.setErrors(null);
+									return null;
+								} else {
+									console.log(`Word type for ${data.word} result ${count} do not match`, data.results[count]);
+									count ++
+								}
+								// When we reach the end, give up
+								if (count == data.results.length) {
+									control.setErrors({'noWordFound': data.results[0].partOfSpeech});
+									return {'noWordFound': control.value}
+								}
 							}
+						// If there aren't enough results
 						} else {
-							console.log("No part of speech data from API");
+							control.setErrors({'notEnoughDataFromAPI': control.value});
+							return {'notEnoughDataFromAPI': control.value};
 						}
-						// probably add this to logic somewhere
-						// Make this blank field the user inputted word
-						this.blanks_copy[i] = this.words_field.value[i];
-
-						// Keep track if we're at the end of the loop
-						if (count == this.words_field.controls.length - 1) {
-							// Let promise know we are done
-							resolve();
-						}
-						count++;
+					},
+					// Catch http errors of all kinds and assume user did something wrong
+					// Because it's not our fault amirite
+					err => {
+						control.setErrors({'wordNotValid': control.value});
+						return {'wordNotValid': control.value}
 					});
+				// Betrayal Can Only Happen If You Trust
+				} else {
+					this.blanks_copy[i] = control.value;
+				}
 			}
-		});
 	}
 
 	onNewMadlib() {
 		// Call validate words and wait for it to finish
-		this.validateWords().then((value) => {
 			let newStr = "";
 			for (let i = 0; i < this.words_field.controls.length; i++) {
 				newStr += this.madlib.value[i];
@@ -115,6 +137,5 @@ export class MadlibCreateComponent implements OnInit {
 					console.log("Got data from post back", data);
 					this._router.navigate(["/"]);
 				});
-		});
 	}
 }
