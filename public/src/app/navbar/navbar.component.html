@@ -10,7 +10,7 @@
 		>
 			Madlibber
 		</a>
-		<ng-container *ngIf="activeUser"> {{activeUser.user_name}}</ng-container>
+		<ng-container *ngIf="activeUser"> {{ activeUser.user_name }}</ng-container>
 	</div>
 	<div class="navbar-end">
 		<div class="navbar-item">
@@ -29,12 +29,12 @@
 						[routerLink]="['/lib/create']"
 						>Create Mad Lib</a
 					>
-					<a class="button is-info is-size-5" [routerLink]="'/user/' + activeUser._id"
+					<a
+						class="button is-info is-size-5"
+						[routerLink]="'/user/' + activeUser._id"
 						>View Profile</a
 					>
 					<a class="button is-danger is-size-5" (click)="logout()">Logout</a>
-
-					
 				</ng-container>
 			</div>
 		</div>

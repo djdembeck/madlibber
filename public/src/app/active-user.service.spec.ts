@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { ActiveUserService } from './active-user.service';
+import { ActiveUserService } from "./active-user.service";
 
-describe('ActiveUserService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe("ActiveUserService", () => {
+	beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-	const service: ActiveUserService = TestBed.get(ActiveUserService);
-	expect(service).toBeTruthy();
-  });
+	it("should be created", () => {
+		const service: ActiveUserService = TestBed.get(ActiveUserService);
+		expect(service).toBeTruthy();
+	});
 });

@@ -2,7 +2,11 @@
 	<div class="tile is-child notification is-primary has-text-dark">
 		<p class="title">{{ user.first_name }} {{ user.last_name }}'s profile</p>
 		<ng-container *ngIf="activeUser">
-			<a class="button is-info is-size-5" [routerLink]="['/user/edit/',activeUser._id]">Edit Profile</a>
+			<a
+				class="button is-info is-size-5"
+				[routerLink]="['/user/edit/', activeUser._id]"
+				>Edit Profile</a
+			>
 		</ng-container>
 		<p class="subtitle">
 			Total likes: {{ totalLikes }}

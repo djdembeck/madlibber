@@ -24,14 +24,21 @@
 										input
 										has-text-centered has-background-warning-dark has-text-light
 									"
-									[ngClass]="control.invalid && (control.dirty || control.touched) ? 'is-danger' : 'is-light'"
-									[ngClass]="control.valid ?  '' : 'is-danger'"
+									[ngClass]="
+										control.invalid && (control.dirty || control.touched)
+											? 'is-danger'
+											: 'is-light'
+									"
+									[ngClass]="control.valid ? '' : 'is-danger'"
 									size="{{ madlib.blanks[i].length }}"
 									type="text"
 									[formControl]="words_field.controls[i]"
-								>
+								/>
 								<!-- Field validation errors -->
-								<p *ngIf="control.invalid && (control.dirty || control.touched)" class="help is-danger is-size-6">
+								<p
+									*ngIf="control.invalid && (control.dirty || control.touched)"
+									class="help is-danger is-size-6"
+								>
 									<span *ngIf="control.errors?.required">
 										Word is required.
 									</span>
@@ -39,7 +46,7 @@
 										Word must be at least 3 characters long.
 									</span>
 									<span *ngIf="control.errors?.noWordFound">
-										Wrong type of word ({{control.errors.noWordFound}})
+										Wrong type of word ({{ control.errors.noWordFound }})
 									</span>
 									<span *ngIf="control.errors?.notEnoughDataFromAPI">
 										No API data for this word.

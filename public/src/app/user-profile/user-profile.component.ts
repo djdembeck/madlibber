@@ -10,7 +10,7 @@ import { HttpService } from "../http.service";
 })
 export class UserProfileComponent implements OnInit {
 	user: any;
-	activeUser:any
+	activeUser: any;
 	totalLikes: number;
 
 	constructor(
@@ -26,10 +26,9 @@ export class UserProfileComponent implements OnInit {
 	ngOnInit() {
 		this.displayMadlib();
 
-		this._activeUserService.getActiveUser().subscribe(data=>{
-			this.activeUser = data
-		})
-		
+		this._activeUserService.getActiveUser().subscribe((data) => {
+			this.activeUser = data;
+		});
 	}
 
 	displayMadlib() {

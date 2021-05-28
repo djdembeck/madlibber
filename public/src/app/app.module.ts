@@ -44,7 +44,7 @@ import { ActiveUserService } from "./active-user.service";
 		FormsModule,
 		ReactiveFormsModule,
 	],
-	providers: [HttpService,ActiveUserService],
+	providers: [HttpService, ActiveUserService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -8,29 +8,29 @@ import { ActiveUserService } from "../active-user.service";
 	styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-	activeUser:any
+	activeUser: any;
 
 	constructor(
 		private _router: Router,
 		private _activeUserService: ActiveUserService
-		) {}
-		
-		ngOnInit() {
-		if (localStorage.getItem('activeUser')){
+	) {}
+
+	ngOnInit() {
+		if (localStorage.getItem("activeUser")) {
 			// this._activeUserService.setActiveUser(localStorage.getItem('activeUser'))
-			this.activeUser = JSON.parse(localStorage.getItem('activeUser'))
-			this._activeUserService.setUserFromStorage(this.activeUser)
-			console.log(this.activeUser)
+			this.activeUser = JSON.parse(localStorage.getItem("activeUser"));
+			this._activeUserService.setUserFromStorage(this.activeUser);
+			console.log(this.activeUser);
 		}
-		this._activeUserService.getActiveUser().subscribe(data=>{
-			this.activeUser = data
-			console.log("from navbar:", this.activeUser)
-		})
+		this._activeUserService.getActiveUser().subscribe((data) => {
+			this.activeUser = data;
+			console.log("from navbar:", this.activeUser);
+		});
 	}
 
 	logout() {
 		localStorage.removeItem("user");
-		this._activeUserService.clearActiveUser(this.activeUser)
-		location.reload()
+		this._activeUserService.clearActiveUser(this.activeUser);
+		location.reload();
 	}
 }

@@ -19,7 +19,7 @@ export class UserEditComponent implements OnInit {
 	emailErr: any;
 	pwError: any;
 	passwordError: any;
-	activeUser:any
+	activeUser: any;
 
 	constructor(
 		private _http: HttpService,
@@ -38,10 +38,10 @@ export class UserEditComponent implements OnInit {
 		this.emailErr = "";
 		this.pwError = "";
 
-		this._activeUserService.getActiveUser().subscribe(data=>{
-			this.activeUser = data
-			this.user = data
-			})
+		this._activeUserService.getActiveUser().subscribe((data) => {
+			this.activeUser = data;
+			this.user = data;
+		});
 	}
 
 	onEditSubmit() {
@@ -69,7 +69,7 @@ export class UserEditComponent implements OnInit {
 
 	deleteUser(user) {
 		this._http.deleteUser(user).subscribe((data) => {
-			this._activeUserService.clearActiveUser(this.activeUser)
+			this._activeUserService.clearActiveUser(this.activeUser);
 			this._router.navigate(["/"]);
 		});
 	}
