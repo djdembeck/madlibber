@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpService } from "../http.service";
+import localStorage from "localStorage";
+import { ActiveUserService } from "../active-user.service";
 
 @Component({
 	selector: "app-user-login",
@@ -8,7 +10,8 @@ import { HttpService } from "../http.service";
 	styleUrls: ["./user-login.component.css"],
 })
 export class UserLoginComponent implements OnInit {
-	@Input() settings;
+	activeUser: any;
+	user_in_storage: any;
 	user: any;
 	errors: any;
 	userError: any;
@@ -16,19 +19,24 @@ export class UserLoginComponent implements OnInit {
 	constructor(
 		private _http: HttpService,
 		private _route: ActivatedRoute,
-		private _router: Router
+		private _router: Router,
+		private _activeUserService: ActiveUserService
 	) {}
 
 	ngOnInit() {
 		this.user = {};
 		this.userError = "";
+
+		this._activeUserService.getActiveUser().subscribe((data) => {
+			this.activeUser = data;
+		});
 	}
 
 	onLoginSubmit() {
 		this._http.userLogin(this.user).subscribe((data: any) => {
-			console.log("logged in", data);
-			if (data == true) {
-				localStorage.setItem("user", this.user);
+			console.log(data);
+			if (data._id) {
+				this._activeUserService.setActiveUser(data);
 				this._router.navigate(["/"]);
 			} else {
 				this.userError = data;
