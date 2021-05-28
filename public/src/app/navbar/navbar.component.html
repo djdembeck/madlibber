@@ -10,9 +10,11 @@
 		>
 			Madlibber
 		</a>
-		<ng-container *ngIf="activeUser"> {{ activeUser.user_name }}</ng-container>
 	</div>
 	<div class="navbar-end">
+		<div class="navbar-item">
+			<span class="has-text-light is-size-5" *ngIf="activeUser">Welcome, {{ activeUser.user_name }}</span>
+		</div>
 		<div class="navbar-item">
 			<div class="buttons">
 				<ng-container *ngIf="activeUser == null">

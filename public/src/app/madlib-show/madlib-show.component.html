@@ -1,10 +1,19 @@
-<h2>{{ madlib.user.user_name }}</h2>
+<div class="tile is-parent is-vertical" *ngIf="madlib">
+	<div class="tile is-child notification is-warning has-text-dark">
+		<div class="section">
+			<div class="content">
+				<p class="title">{{ madlib.user.user_name }}'s creation:</p>
+				<p class="subtitle">
+					{{ madlib.madlib }}
+				</p>
 
-<div>
-	<p>{{ madlib.madlib }}</p>
-	<p>{{ madlib.likes }}</p>
+			</div>
+		</div>
+		<div class="level">
+				<div class="level-item">
+					<button class="button is-link is-size-5" (click)="onLikeSubmit()"  *ngIf="liked">Like</button>
+			</div>
+				<span class="has-text-weight-semibold is-size-5">Likes: {{ madlib.likes }}</span>
+		</div>
+	</div>
 </div>
-<div *ngIf="liked">
-	<button (click)="onLikeSubmit()">Like</button>
-</div>
-<button [routerLink]="['/user', madlib.user._id]">Lib Creator</button>
