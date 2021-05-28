@@ -1,22 +1,23 @@
-<p class="title">Top Libs</p>
+<p class="title">Top 5 Libs</p>
 <div *ngIf="madlibs" style="height: 400px; overflow: auto">
 	<div
-		class="box has-background-grey has-text-light"
+		class="box has-background-link has-text-light"
 		*ngFor="let lib of madlibs"
 	>
-		<p class="subtitle">
+		<p class="title">
 			<a [routerLink]="'/lib/' + lib._id">{{ lib.title }}</a>
 		</p>
+		<p>{{ (lib.madlib.length>6)? (lib.madlib | slice:0:90)+'...':(lib.madlib) }}</p>
 		<div class="level">
 			<div class="level-left">
 				<div class="level-item">
-					<span>Likes: {{ lib.likes }}</span>
+					<span class="has-text-weight-semibold">Likes: {{ lib.likes }}</span>
 				</div>
 			</div>
 			<div class="level-right">
 				<div class="level-item">
 					<a
-						class="button is-dark is-small"
+						class="button is-link is-light"
 						[routerLink]="'/user/' + lib.user._id"
 					>
 						by {{ lib.user.user_name }}

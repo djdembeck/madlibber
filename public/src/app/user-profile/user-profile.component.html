@@ -3,7 +3,7 @@
 		<p class="title">{{ user.first_name }} {{ user.last_name }}'s profile</p>
 		<div class="tile is-child notification is-warning has-text-dark">
 			<div class="content">
-				<p class="title">{{ user.user_name }}'s created libs</p>
+				<p class="title">Libs</p>
 				<div *ngIf="user.madlibs?.length == 0">
 					<p class="subtitle">
 						Booo, {{ user.user_name }} hasn't created any libs yet (maybe they
@@ -15,29 +15,30 @@
 					style="height: 400px; overflow: auto"
 				>
 					<div
-						class="box has-background-grey has-text-light"
+						class="box has-background-info has-text-light"
 						*ngFor="let lib of user.madlibs"
 					>
 						<!-- lib.title (make it this a link)  -->
+						<p class="title"><a [routerLink]="['/lib/', lib._id]">{{lib.title}}</a></p>
 						<p class="subtitle">{{ lib.madlib }}</p>
-						<span class="has-text-weight-semibold">Likes: {{ lib.likes }}</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<ng-container *ngIf="activeUser._id == user._id">
-			<div class="block"></div>
-
-			<div class="level">
-				<div class="level-item">
-					<p
-						class="button is-info is-size-5"
-						[routerLink]="['/user/edit/', activeUser._id]"
-					>
-						Edit Profile
-					</p>
+		<ng-container *ngIf="activeUser">
+			<ng-container *ngIf="activeUser._id == user._id">
+				<div class="block"></div>
+				<div class="level">
+					<div class="level-item">
+						<p
+							class="button is-info is-size-5"
+							[routerLink]="['/user/edit/', activeUser._id]"
+						>
+							Edit Profile
+						</p>
+					</div>
 				</div>
-			</div>
+			</ng-container>
 		</ng-container>
 	</div>
 </div>

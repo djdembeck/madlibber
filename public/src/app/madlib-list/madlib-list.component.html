@@ -1,10 +1,10 @@
 <p class="title">10 recent Libs</p>
 <div *ngIf="madlibs" style="height: 400px; overflow: auto">
 	<div
-		class="box has-background-grey has-text-light"
+		class="box has-background-dark has-text-light"
 		*ngFor="let lib of madlibs"
 	>
-		<p class="subtitle">
+		<p class="title is-size-5">
 			<a [routerLink]="'/lib/' + lib._id">{{ lib.title }}</a>
 		</p>
 		<div class="level">
@@ -16,7 +16,7 @@
 			<div class="level-right">
 				<div class="level-item">
 					<a
-						class="button is-dark is-small"
+						class="button is-warning has-text-dark"
 						[routerLink]="'/user/' + lib.user._id"
 					>
 						by {{ lib.user.user_name }}
