@@ -35,11 +35,6 @@ export class UserRegistrationComponent implements OnInit {
 		this.userNameErr = "";
 		this.emailErr = "";
 		this.pwError = "";
-
-		this._activeUserService.getActiveUser().subscribe(data=>{
-		this.activeUser = data
-		this.user = data
-		})
 	}
 
 	onRegSubmit() {
