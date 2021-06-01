@@ -28,7 +28,7 @@ export class MadlibListComponent implements OnInit {
 
 	showMadlibs() {
 		this._httpService.recentMadlibs().subscribe((data) => {
-			console.log("Got madlibs", data);
+			// console.log("Got madlibs", data);
 			this.madlibs = data;
 			for (let lib of this.madlibs) {
 				for (let user of this.users) {
@@ -43,7 +43,6 @@ export class MadlibListComponent implements OnInit {
 					}
 				}
 			}
-			console.log(this.madlibs);
 		});
 	}
 }

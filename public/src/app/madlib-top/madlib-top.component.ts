@@ -28,7 +28,7 @@ export class MadlibTopComponent implements OnInit {
 
 	showMadlibs() {
 		this._httpService.top5Madlibs().subscribe((data) => {
-			console.log("Got madlibs", data);
+			// console.log("Got madlibs", data);
 			this.madlibs = data;
 			for (let lib of this.madlibs) {
 				for (let user of this.users) {

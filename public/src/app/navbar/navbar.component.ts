@@ -20,11 +20,11 @@ export class NavbarComponent implements OnInit {
 			// this._activeUserService.setActiveUser(localStorage.getItem('activeUser'))
 			this.activeUser = JSON.parse(localStorage.getItem("activeUser"));
 			this._activeUserService.setUserFromStorage(this.activeUser);
-			console.log(this.activeUser);
+			// console.log(this.activeUser);
 		}
 		this._activeUserService.getActiveUser().subscribe((data) => {
 			this.activeUser = data;
-			console.log("from navbar:", this.activeUser);
+			// console.log("from navbar:", this.activeUser);
 		});
 	}
 
