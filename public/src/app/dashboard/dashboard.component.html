@@ -1,0 +1,37 @@
+<div class="tile is-ancestor">
+	<div class="tile is-vertical is-8">
+		<div class="tile">
+			<div class="tile is-parent is-vertical">
+				<article class="tile is-child notification is-primary has-text-dark">
+					<p class="title is-size-2-desktop">Some background on MadLibs...</p>
+					<p class="subtitle is-size-3-desktop is-size-3-tablet is-size-3-widescreen has-text-weight-light">
+						Mad Libs contain short stories with many key words replaced with
+						blanks. Beneath each blank is specified a category, such as "noun",
+						"verb", "place", "celebrity," "exclamation" or "part of the body".
+						Contribute a word of the specified type for each blank, but without
+						revealing the context for that word. Finally, the completed story is
+						read aloud. The result is usually a sentence which is comical,
+						surreal and/or takes on somewhat of a nonsensical tone.
+					</p>
+				</article>
+				<article class="tile is-child notification is-warning">
+					<app-madlib-top></app-madlib-top>
+				</article>
+			</div>
+		</div>
+	</div>
+	<div class="tile is-parent is-vertical">
+		<div class="tile is-child notification is-success has-text-dark">
+			<div class="content">
+				<div class="content">
+					<app-madlib-list></app-madlib-list>
+				</div>
+			</div>
+		</div>
+		<article class="tile is-child notification is-info">
+			<div class="content">
+				<app-user-top></app-user-top>
+			</div>
+		</article>
+	</div>
+</div>

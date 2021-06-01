@@ -1,0 +1,28 @@
+<div class="tile is-parent is-vertical" *ngIf="madlib">
+	<div class="tile is-child notification is-warning has-text-dark">
+		<div class="section">
+			<div class="content">
+				<p class="title">{{ madlib.title }}</p>
+				<p class="subtitle">
+					{{ madlib.madlib }}
+				</p>
+			</div>
+		</div>
+		<div class="level">
+			<div class="level-item">
+				<ng-container *ngIf='activeUser'>
+					<button
+					class="button is-link is-size-5"
+					(click)="onLikeSubmit()"
+					*ngIf="liked"
+				>
+					Like
+				</button>
+				</ng-container>
+			</div>
+			<span class="has-text-weight-semibold is-size-5"
+				>Likes: {{ madlib.likes }}</span
+			>
+		</div>
+	</div>
+</div>

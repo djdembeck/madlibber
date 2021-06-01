@@ -1,29 +1,33 @@
 {
-  "name": "material-madlibs",
-  "version": "1.0.0",
-  "description": "Madlibs game with WordsAPI validation",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/djdembeck/material-madlibs.git"
-  },
-  "keywords": [
-    "angular",
-    "madlibs",
-    "materialui",
-    "mean"
-  ],
-  "author": "David Dembeck",
-  "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/djdembeck/material-madlibs/issues"
-  },
-  "homepage": "https://github.com/djdembeck/material-madlibs#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.12.11"
-  }
+	"name": "madlibber",
+	"version": "1.0.0",
+	"description": "Madlibs game with WordsAPI validation",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/djdembeck/madlibber.git"
+	},
+	"keywords": [
+		"angular",
+		"madlibs",
+		"bulma",
+		"mean"
+	],
+	"author": "David Dembeck",
+	"license": "GPL-3.0-or-later",
+	"bugs": {
+		"url": "https://github.com/djdembeck/madlibber/issues"
+	},
+	"homepage": "https://github.com/djdembeck/madlibber#readme",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"express": "^4.17.1",
+		"express-session": "^1.17.2",
+		"localStorage": "^1.0.4",
+		"mongoose": "^5.12.11",
+		"node-localstorage": "^2.1.6"
+	}
 }

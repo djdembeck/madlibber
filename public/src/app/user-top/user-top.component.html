@@ -1,1 +1,19 @@
-<p>user-top works!</p>
+<p class="title">Libbers</p>
+<ng-container *ngFor="let user of users">
+	<div class="box has-background-danger-dark has-text-light">
+		<div class="level">
+			<div class="level-left">
+				<div class="level-item">
+					<span class="subtitle">{{ user.user_name }}</span>
+				</div>
+			</div>
+			<div class="level-right">
+				<div class="level-item">
+					<a class="button is-light is-link" [routerLink]="'/user/' + user._id">
+						View Profile
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-container>
