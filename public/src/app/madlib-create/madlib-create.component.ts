@@ -45,7 +45,7 @@ export class MadlibCreateComponent implements OnInit {
 	getAMadLib() {
 		this._httpService.genMadLib().subscribe((data) => {
 			this.madlib = data;
-			console.log("Here's the madlib we got from API", data);
+			// console.log("Here's the madlib we got from API", data);
 			this.addWord();
 		});
 	}
@@ -85,26 +85,26 @@ export class MadlibCreateComponent implements OnInit {
 			if (wordIsKnown && control.value) {
 				return this._httpService.validateWord(control.value).subscribe(
 					(data) => {
-						console.log(data);
+						// console.log(data);
 						// If valid results AND top result has partOfSpeech key
 						if (data.results && data.results[0].partOfSpeech) {
 							let count = 0;
-							console.log("Looking for first matching occurence");
+							// console.log("Looking for first matching occurence");
 							// Run through results array until we run out of results or validate
 							while (count < data.results.length) {
 								if (data.results[count].partOfSpeech == this.madlib.blanks[i]) {
-									console.log(
-										`Word type for ${data.word} result ${count} matches`,
-										data.results[count]
-									);
+									// console.log(
+									// 	`Word type for ${data.word} result ${count} matches`,
+									// 	data.results[count]
+									// );
 									this.blanks_copy[i] = control.value;
 									control.setErrors(null);
 									return null;
 								} else {
-									console.log(
-										`Word type for ${data.word} result ${count} do not match`,
-										data.results[count]
-									);
+									// console.log(
+									// 	`Word type for ${data.word} result ${count} do not match`,
+									// 	data.results[count]
+									// );
 									count++;
 								}
 								// When we reach the end, give up
@@ -147,7 +147,6 @@ export class MadlibCreateComponent implements OnInit {
 			}
 		}
 		this.newMadlib = { title: this.madlib.title, madlib: newStr };
-		console.log("newstring", this.newMadlib);
 		this._httpService
 			.createMadlib(this.newMadlib, this.user)
 			.subscribe((data) => {

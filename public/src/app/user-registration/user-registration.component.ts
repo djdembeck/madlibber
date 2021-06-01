@@ -55,7 +55,7 @@ export class UserRegistrationComponent implements OnInit {
 			} else if (data == false)
 				this.passwordError = "Password does not match confirm password.";
 			else {
-				console.log("user created");
+				// console.log("user created");
 				this._activeUserService.setActiveUser(data);
 				this._router.navigate(["/"]);
 			}

@@ -56,7 +56,7 @@ export class HttpService {
 
 	genMadLib() {
 		return this._http.get<any>(
-			`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=20`
+			`http://madlibz.herokuapp.com/api/random?minlength=5&maxlength=25`
 		);
 	}
 

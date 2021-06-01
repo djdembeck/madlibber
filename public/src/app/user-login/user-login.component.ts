@@ -34,7 +34,6 @@ export class UserLoginComponent implements OnInit {
 
 	onLoginSubmit() {
 		this._http.userLogin(this.user).subscribe((data: any) => {
-			console.log(data);
 			if (data._id) {
 				this._activeUserService.setActiveUser(data);
 				this._router.navigate(["/"]);
