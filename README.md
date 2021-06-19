@@ -1,5 +1,5 @@
 # Madlibber
-Madlibs generator with WordsAPI validation. Built on the MEAN stack, using Bulma.
+Madlibs game with word-type validation using WordsAPI and template generation from Madlibz. Built on the MEAN stack, using Bulma for a fully responsive frontend.
 
 API's used:
 
